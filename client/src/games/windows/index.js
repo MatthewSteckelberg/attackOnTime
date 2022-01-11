@@ -1,3 +1,7 @@
+import { gsap } from "gsap";
+import $ from 'jquery'; 
+import './style.css';
+import './index.html';
 
 function BayWindow() {
     let xPos = 0;
@@ -8,8 +12,7 @@ function BayWindow() {
           rotateY: (i)=> i*-36,
           transformOrigin: '50% 50% 500px',
           z: -500,
-    backgroundImage: (i) =>'url(images/animal-' + i +'.jpeg)',
-          backgroundPosition:(i)=>getBgPos(i),
+          backgroundImage:(i)=>'url(https://picsum.photos/id/'+(i+32)+'/600/400/)', backgroundPosition:(i)=>getBgPos(i),
           backfaceVisibility:'hidden'
         })    
         .from('.img', {
@@ -71,12 +74,9 @@ function BayWindow() {
     }
 
     return (
-        <>
+        <head>
             <h1 id="header"> Find the Dog</h1>
             <div class="stage">
-
-
-
 
                 <div class="container">
                     <div class="ring">
@@ -94,6 +94,8 @@ function BayWindow() {
                 </div>
 
             </div>
-        </>
+        </head>
     )
 }
+
+export default BayWindow;
