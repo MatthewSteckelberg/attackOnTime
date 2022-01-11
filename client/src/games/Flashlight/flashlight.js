@@ -1,5 +1,5 @@
 
-function update(e){
+export default function update(e){
     var x = e.clientX || e.touches[0].clientX
     var y = e.clientY || e.touches[0].clientY
   

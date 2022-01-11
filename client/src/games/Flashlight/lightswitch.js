@@ -1,4 +1,4 @@
-function turnOnLights()
+export default function turnOnLights()
 {
    document.body.style.cursor="pointer";
     lightSwitch.src="https://cdn.pixabay.com/photo/2012/04/18/13/25/light-switch-37017_960_720.png"
