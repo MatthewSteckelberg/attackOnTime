@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import BayWindow from './games/windows/index.jsx';
-import FlashlightReact from './games/Flashlight/flashlightReact';
+import FlashlightReact from './games/flashlight/flashlightReact';
 import Navbar from './components/navbar/Navbar';
 import DragCounter from './games/drag_counter/index.js';
 import Bookshelf from './games/bookshelf';
