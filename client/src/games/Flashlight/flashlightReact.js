@@ -1,6 +1,6 @@
 import "./flashlight.module.css"
 import "./lightswitch.module.css"
-//import Radium from 'radium';
+//import Flashlight from "./Flashlight"
 
 
 
@@ -15,6 +15,7 @@ import "./lightswitch.module.css"
           
             document.documentElement.style.setProperty('--cursorX', x + 'px')
             document.documentElement.style.setProperty('--cursorY', y + 'px')
+            console.log({x});
           }
           
           document.addEventListener('mousemove',update)
