@@ -16,7 +16,7 @@ return (
         <a class="nav-link" href="/Login">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Game Descriptions</a>
+        <a class="nav-link" href="/#">Game Descriptions</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

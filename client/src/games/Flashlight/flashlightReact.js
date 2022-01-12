@@ -54,7 +54,6 @@ import "./flashlight.module.css"
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit earum voluptas officia, quasi saepe et commodi, dolores cumque quam fuga ullam, itaque ea dignissimos asperiores adipisci ad eveniet repellendus!</p>
                 </article>
             </section>
-            <div className="test"></div>
         </div>
         );
 
