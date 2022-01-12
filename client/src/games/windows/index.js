@@ -1,7 +1,7 @@
 import { gsap } from "gsap";
 import $ from 'jquery'; 
 import './style.css';
-import './index.html';
+//import './index.html';
 
 function BayWindow() {
     let xPos = 0;

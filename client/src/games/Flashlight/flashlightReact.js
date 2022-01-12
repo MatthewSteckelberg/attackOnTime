@@ -1,10 +1,10 @@
-import "./flashlight.css"
-import "./lightswitch.css"
-import turnOnLights from "./lightswitch"
+//import "./flashlight.module.css"
+import "./lightswitch.module.css"
 
 
 
-    function flashlightGame() {
+
+    function FlashlightReact() {
 
 
 
@@ -19,11 +19,21 @@ import turnOnLights from "./lightswitch"
           document.addEventListener('mousemove',update)
           document.addEventListener('touchmove',update)
         
-        
+          const TurnOnLights = (event) =>
+          {
+            event.preventDefault();
+             document.body.style.cursor="pointer";
+              event.src="https://cdn.pixabay.com/photo/2012/04/18/13/25/light-switch-37017_960_720.png"
+              var r = document.querySelector(':root');
+              // var rs = getComputedStyle(r);
+              // alert("--Flashlight is " + rs.getPropertyValue("--flashlight"));
+              r.style.setProperty('--flashlight', 'none');
+              //alert("Light is now on");
+          }
         
 
         return (<>
-            <img src="https://cdn.pixabay.com/photo/2012/04/16/13/27/switch-36000_960_720.png" alt="light switch" id="lightSwitch" style="width:200px;height:250px;" onclick="turnOnLights()" />
+            <img src="https://cdn.pixabay.com/photo/2012/04/16/13/27/switch-36000_960_720.png" alt="light switch" id="lightSwitch" style="width:200px;height:250px;" onclick={TurnOnLights} />
             <section>
                 <article>
                     <h2>Hidden Headline</h2>
@@ -47,4 +57,4 @@ import turnOnLights from "./lightswitch"
         </>);
 
     }
-export default flashlightGame();
+export default FlashlightReact();

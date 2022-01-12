@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import BayWindow from './games/windows/index.js';
+import FlashlightReact from './games/Flashlight/FlashlightReact';
 
 
 
@@ -17,6 +18,7 @@ function App() {
             <BayWindow />
           </Route>
           <Route path="/2">
+          <FlashlightReact/>
           </Route>
           <Route exact path="/3">
           </Route>
