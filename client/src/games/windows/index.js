@@ -1,7 +1,7 @@
 import { gsap } from "gsap";
 import $ from 'jquery'; 
 import './style.css';
-import './index.html';
+//import './index.html';
 
 function BayWindow() {
     let xPos = 0;
@@ -74,7 +74,7 @@ function BayWindow() {
     }
 
     return (
-        <head>
+        <div className="windows-main">
             <h1 id="header"> Find the Dog</h1>
             <div class="stage">
 
@@ -94,7 +94,7 @@ function BayWindow() {
                 </div>
 
             </div>
-        </head>
+        </div>
     )
 }
 
