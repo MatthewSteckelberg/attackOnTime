@@ -7,16 +7,12 @@ import FlashlightReact from './games/flashlight/flashlightReact';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Hello World</h1>
-      </header>
-      <div className="app-body">
         <BrowserRouter>
           <Switch>
-            <Route path="/1">
+            <Route path="/window">
               <BayWindow />
             </Route>
-            <Route path="/2">
+            <Route path="/flashlight">
               <FlashlightReact />
             </Route>
             <Route exact path="/3">
@@ -27,7 +23,6 @@ function App() {
             </Route>
           </Switch>
         </BrowserRouter>
-      </div>
     </div>
   );
 }

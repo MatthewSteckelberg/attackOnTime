@@ -3,8 +3,9 @@ import $ from 'jquery';
 import './style.css';
 import React from 'react';
 
+let xPos = 0;
+
 function BayWindow() {
-    let xPos = 0;
 
     gsap.timeline()
         .set('.ring', { rotationY:180, cursor:'grab' }) //set initial rotationY so the parallax jump happens off screen
@@ -34,28 +35,8 @@ function BayWindow() {
     
     $(window).on('mousedown touchstart', dragStart);
     $(window).on('mouseup touchend', dragEnd);
-          
-    return(
-      <div class="stage">
-          <h1 id="header">Find the Dog</h1>
-        <div class="container">
-          <div class="ring">
-            <div class="img"></div>
-            <div class="img"></div>
-            <div class="img"></div>
-            <div class="img"></div>
-            <div class="img"></div>
-            <div class="img"></div>
-            <div class="img"></div>
-            <div class="img"></div>
-            <div class="img" id="thisOne"></div>
-            <div class="img"></div>
-          </div>
-        </div>
-      </div>
-  )}
+   
   
-
     function dragStart(e){ 
       if (e.touches) e.clientX = e.touches[0].clientX;
       xPos = Math.round(e.clientX);
@@ -63,7 +44,7 @@ function BayWindow() {
       $(window).on('mousemove touchmove', drag);
     }
     
-    
+
     function drag(e){
       if (e.touches) e.clientX = e.touches[0].clientX;    
     
@@ -92,6 +73,27 @@ function BayWindow() {
         e.preventDefault();
         alert("found it!")
     }
-
+       
+    return(
+      <div className="windows-main">
+      <div class="stage">
+          <h1 id="header">Findthe Dog</h1>
+        <div class="container">
+          <div class="ring">
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img" id="thisOne"></div>
+            <div class="img"></div>
+          </div>
+        </div>
+      </div>
+      </div>
+  )}
 
 export default BayWindow;
