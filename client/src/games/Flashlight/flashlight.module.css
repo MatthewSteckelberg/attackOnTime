@@ -1,11 +1,20 @@
 /* Flashlight Overlay */
+
+
+
+:root{
+  --cursorX: 50vw;
+  --cursorY: 50vh;
+}
+
+
 :global .flashlightGame {
   position: absolute;
   left: 0;
   top: 0;
   cursor: none;
-  --cursorX: 50vw;
-  --cursorY: 50vh;
+  /* --cursorX: 50vw;
+  --cursorY: 50vh; */
 
   --flashlight: radial-gradient(
     circle 10vmax at var(--cursorX) var(--cursorY),
