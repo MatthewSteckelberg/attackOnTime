@@ -1,28 +1,28 @@
 HTML SCSS BabelResult Skip Results Iframe
 EDIT ON
-html, body
-{
-  width: 100%;
-  min-height: 100%;
-  margin: 0;
-  background: #112dbb;
-  padding: 0;
-  position: relative;
-  overflow: hidden;
-}
+// html, body
+// {
+//   width: 100%;
+//   min-height: 100%;
+//   margin: 0;
+//   background: #112dbb;
+//   padding: 0;
+//   position: relative;
+//   overflow: hidden;
+// }
 
-body 
-{
+// body 
+// {
   
-  position: relative;
-  overscroll-behavior: contain;
+//   position: relative;
+//   overscroll-behavior: contain;
   
 
-  &.zoomed, &.loading
-  {
-    overflow: hidden;
-  }
-}
+//   &.zoomed, &.loading
+//   {
+//     overflow: hidden;
+//   }
+// }
 
 .page
 {
