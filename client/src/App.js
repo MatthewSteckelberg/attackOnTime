@@ -1,15 +1,10 @@
 import './App.css';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import BayWindow from './games/windows/index.js';
-import FlashlightReact from './games/Flashlight/FlashlightReact';
-
-
+import BayWindow from './games/windows/index.jsx';
+import FlashlightReact from './games/flashlight/flashlightReact';
 
 
 function App() {
-  
-
-
   return (
     <div className="App">
       <header className="App-header">
@@ -23,10 +18,8 @@ function App() {
             </Route>
             <Route path="/2">
               <FlashlightReact />
-
             </Route>
             <Route exact path="/3">
-
             </Route>
             <Route path="/4">
             </Route>

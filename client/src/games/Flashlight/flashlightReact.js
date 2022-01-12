@@ -1,8 +1,4 @@
 import "./flashlight.module.css"
-import "./lightswitch.module.css"
-//import Flashlight from "./Flashlight"
-
-
 
     function FlashlightReact() {
 
