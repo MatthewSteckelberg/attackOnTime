@@ -1,11 +1,12 @@
-//import "./flashlight.module.css"
+import "./flashlight.module.css"
 import "./lightswitch.module.css"
-
+//import Radium from 'radium';
 
 
 
     function FlashlightReact() {
 
+        
 
 
         function update(e){
@@ -19,7 +20,7 @@ import "./lightswitch.module.css"
           document.addEventListener('mousemove',update)
           document.addEventListener('touchmove',update)
         
-          const TurnOnLights = (event) =>
+          const turnOnLights = (event) =>
           {
             event.preventDefault();
              document.body.style.cursor="pointer";
@@ -32,8 +33,10 @@ import "./lightswitch.module.css"
           }
         
 
-        return (<>
-            <img src="https://cdn.pixabay.com/photo/2012/04/16/13/27/switch-36000_960_720.png" alt="light switch" id="lightSwitch" style="width:200px;height:250px;" onclick={TurnOnLights} />
+        return (
+            
+        <div className="flashlightGame">
+            <img src="./images/light-switch-37017_960_720.webp" alt="light switch" id="lightSwitch" onclick={turnOnLights}/>
             <section>
                 <article>
                     <h2>Hidden Headline</h2>
@@ -54,7 +57,9 @@ import "./lightswitch.module.css"
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit earum voluptas officia, quasi saepe et commodi, dolores cumque quam fuga ullam, itaque ea dignissimos asperiores adipisci ad eveniet repellendus!</p>
                 </article>
             </section>
-        </>);
+            <div className="test"></div>
+        </div>
+        );
 
     }
-export default FlashlightReact();
+export default FlashlightReact;

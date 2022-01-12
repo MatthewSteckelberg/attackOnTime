@@ -1,3 +1,10 @@
+
+
+#lightSwitch{
+  height:250px;
+  width: 200px;
+}
+
 html {
   box-sizing: border-box;
   font-family: 'Arial', sans-serif;
