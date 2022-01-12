@@ -1,130 +1,150 @@
+import anime from 'animejs/lib/anime.es.js';
+import './index.scss';
+import $ from 'jquery';
 
-    var mousePos = 0;
-    var currentPos = 0;
-    var position = 0;
-    var draggable = false;
-    var blockAnimeAdd, countAnimePlus = anime.timeline(), countAnimeMinus = anime.timeline();
-    var offset = 130;
-    var direction;
-    var dur = 2000;
-    var count = parseInt($('.active').text());
+function Tearable(){
 
-    $(document).on('mousedown', '.stepper', function () {
-        currentPos = mousePos;
+var mousePos = 0;
+var currentPos = 0;
+var position = 0;
+var draggable = false;
+var blockAnimeAdd, countAnimePlus = anime.timeline(), countAnimeMinus = anime.timeline();
+var offset = 130;
+var direction;
+var dur = 2000;
+var count = parseInt($('.active').text());
 
-        draggable = true;
-        blockAnime.pause();
+$(document).on('mousedown', '.stepper', function () {
+    currentPos = mousePos;
 
-        if ($('.first').hasClass('active')) {
-            $('.first').removeClass('active').addClass('next');
-            $('.second').removeClass('next').addClass('active');
-        } else if ($('.second').hasClass('active')) {
-            $('.second').removeClass('active').addClass('next');
-            $('.first').removeClass('next').addClass('active');
-        }
+    draggable = true;
+    blockAnime.pause();
 
-        if (direction == 'plus') {
-            countAnimePlus.pause();
-        }
+    if ($('.first').hasClass('active')) {
+        $('.first').removeClass('active').addClass('next');
+        $('.second').removeClass('next').addClass('active');
+    } else if ($('.second').hasClass('active')) {
+        $('.second').removeClass('active').addClass('next');
+        $('.first').removeClass('next').addClass('active');
+    }
 
-        if (direction == 'minus') {
-            countAnimeMinus.pause();
-        }
+    if (direction == 'plus') {
+        countAnimePlus.pause();
+    }
 
-        if(count === 16){
-            setNum();
-        }
+    if (direction == 'minus') {
+        countAnimeMinus.pause();
+    }
 
+    if (count === 16) {
+        setNum();
+    }
+
+})
+
+$(document).on("mousemove", function (event) {
+    mousePos = event.pageY;
+
+    if (draggable) {
+        position = mousePos - currentPos;
+        $('.stepper').css('transform', 'translateY(' + position / 2 + 'px)');
+    }
+
+    if (position <= (offset * -1) && draggable) {
+        center();
+        count++;
+        plus();
+    }
+
+    if (position >= offset && draggable) {
+        center();
+        count--;
+        minus();
+    }
+});
+
+$(document).on("mouseup", function (event) {
+    if (draggable) {
+        center();
+    }
+});
+
+
+function center() {
+    draggable = false;
+    blockAnime = anime({
+        targets: '.stepper',
+        duration: dur,
+        translateY: 0,
+    });
+}
+
+function plus() {
+    direction = 'plus';
+    countAnimePlus = anime.timeline();
+
+    $('.next').text(count).css('transform', 'translateY(-100px) translateX(-50%)');
+
+    countAnimePlus.add({
+        targets: '.active',
+        translateY: 100,
+        translateX: '-50%',
+        duration: dur,
     })
-
-    $(document).on("mousemove", function (event) {
-        mousePos = event.pageY;
-
-        if (draggable) {
-            position = mousePos - currentPos;
-            $('.stepper').css('transform', 'translateY(' + position / 2 + 'px)');
-        }
-
-        if (position <= (offset * -1) && draggable) {
-            center();
-            count++;
-            plus();
-        }
-
-        if (position >= offset && draggable) {
-            center();
-            count--;
-            minus();
-        }
-    });
-
-    $(document).on("mouseup", function (event) {
-        if (draggable) {
-            center();
-        }
-    });
-
-
-    function center() {
-        draggable = false;
-        blockAnime = anime({
-            targets: '.stepper',
-            duration: dur,
+        .add({
+            targets: '.next',
             translateY: 0,
+            translateX: '-50%',
+            duration: dur,
+            offset: '-=' + dur,
         });
-    }
+}
 
-    function plus() {
-        direction = 'plus';
-        countAnimePlus = anime.timeline();
+function minus() {
+    direction = 'minus';
+    countAnimeMinus = anime.timeline();
 
-        $('.next').text(count).css('transform', 'translateY(-100px) translateX(-50%)');
+    $('.next').text(count).css('transform', 'translateY(100px) translateX(-50%)');
+    console.log(count)
 
-        countAnimePlus.add({
-            targets: '.active',
-            translateY: 100,
+    countAnimeMinus.add({
+        targets: '.active',
+        translateY: -100,
+        translateX: '-50%',
+        duration: dur,
+    })
+        .add({
+            targets: '.next',
+            translateY: 0,
             translateX: '-50%',
-            duration: dur,
-        })
-            .add({
-                targets: '.next',
-                translateY: 0,
-                translateX: '-50%',
-                duration: dur,
-                offset: '-=' + dur,
-            });
-    }
+            duration: 1500,
+            offset: '-=' + dur,
+        });
+}
 
-    function minus() {
-        direction = 'minus';
-        countAnimeMinus = anime.timeline();
+center();
+plus();
+setTimeout(() => {
+    $('.hide').removeClass('hide');
+}, 300);
 
-        $('.next').text(count).css('transform', 'translateY(100px) translateX(-50%)');
-        console.log(count)
+function setNum() {
+    alert("target reached")
+}
+return (
+    <>
+    <div class="wrap">
+        <div class="stepper">
+            <span class="count first active hide">15</span>
+            <span class="count second next"></span>
+        </div>
+        <img src="https://alikinvv.github.io/stepper-iteration/build/img/arrow-top.svg" alt="" class="arrow-top"></img>
+            <img src="https://alikinvv.github.io/stepper-iteration/build/img/arrow-bottom.svg" alt="" class="arrow-bottom"></img>
+            </div>
 
-        countAnimeMinus.add({
-            targets: '.active',
-            translateY: -100,
-            translateX: '-50%',
-            duration: dur,
-        })
-            .add({
-                targets: '.next',
-                translateY: 0,
-                translateX: '-50%',
-                duration: 1500,
-                offset: '-=' + dur,
-            });
-    }
+            <span class="desc">Hold & Drag</span>
+            </>
+            )
+}
 
-    center();
-    plus();
-    setTimeout(() => {
-        $('.hide').removeClass('hide');
-    }, 300);
-
-    function setNum(){
-        alert("target reached")
-    }
-    
-
+export default Tearable;
