@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //Guest
         //Play the game
         //See list Get
-        // Authenticate POST
+        //Authenticate POST
 
         //User
         //Play the game
@@ -37,11 +37,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //Authenticated
 
         //Admin
-        // Play the game
+        //Play the game
         //See list GET
-        // Submit score POST
-        // Update score PUT
-        // Delete users DELETE
+        //Submit score POST
+        //Update score PUT
+        //Delete users DELETE
         //Authenticated
         http.authorizeRequests()
                 .antMatchers( HttpMethod.GET, "/api/highscores").permitAll()
