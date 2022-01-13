@@ -1,6 +1,7 @@
 import './homepage.css';
 import { useState, useEffect, useContext } from 'react';
 import TimerContext from '../TimerContext';
+import Navbar from '../navbar/Navbar';
 
 function Homepage() {
     const timerManager = useContext(TimerContext);
@@ -39,6 +40,7 @@ console.log('manager: ' + timerManager.timer)
 
     return (
         <div className="home">
+            <Navbar />
             <div hidden class="card" id='timerBox'>
                 <div class="card-body row" id="timerBody">
                    <h2 id='time-and-seconds'><span className='col-md-7'id="time-goes-here"></span> Seconds</h2>

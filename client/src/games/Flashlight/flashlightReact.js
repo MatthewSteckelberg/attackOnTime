@@ -1,4 +1,7 @@
-import "./flashlight.module.css"
+import "./flashlight.module.css";
+import './index.css';
+import lightOn from './images/light-on.webp';
+import lightOff from './images/light-off.webp';
 
 function FlashlightReact() {
 
@@ -26,9 +29,13 @@ function FlashlightReact() {
         light = "https://cdn.pixabay.com/photo/2012/04/18/13/25/light-switch-37017_960_720.png"
         r.style.setProperty('--flashlight', 'none');
         r.style.setProperty('--mouse', 'auto');
-        
+        document.getElementById('lightSwitchOff').removeAttribute("hidden");
+        document.getElementById('lightSwitchOn').hidden = true;
+        document.getElementById('light-next-button').removeAttribute("hidden");
+        document.getElementById('flashlight-instructions').hidden = true;
+
         // var rs = getComputedStyle(r);
-    
+
         //alert("--Flashlight is " + rs.getPropertyValue("--flashlight"));
         //alert("Light is now on");
     }
@@ -36,28 +43,13 @@ function FlashlightReact() {
     return (
 
         <div className="flashlightGame">
-            <img src={light} alt="light switch" id="lightSwitch" onClick={turnOnLights} />
+            <h2 id="flashlight-instructions">It's dark in here, turn on the lights</h2>
+            <a hidden className='btn' id='light-next-button' href="/" type='submit'>NEXT</a>
+            <div id="lightSwitchDiv row">
+                <img className="switch" src={lightOff} alt="light switch" id="lightSwitchOn" onClick={turnOnLights} />
+                <img className="switch" hidden src={lightOn} alt="light switch" id="lightSwitchOff" onClick={turnOnLights} />
+            </div>
 
-            <section>
-                <article>
-                    <h2>Hidden Headline</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit earum voluptas officia, quasi saepe et commodi, dolores cumque quam fuga ullam, itaque ea dignissimos asperiores adipisci ad eveniet repellendus!</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit earum voluptas officia, quasi saepe et commodi, dolores cumque quam fuga ullam, itaque ea dignissimos asperiores adipisci ad eveniet repellendus!</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit earum voluptas officia, quasi saepe et commodi, dolores cumque quam fuga ullam, itaque ea dignissimos asperiores adipisci ad eveniet repellendus!</p>
-                </article>
-                <article>
-                    <h2>Headline</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit earum voluptas officia, quasi saepe et commodi, dolores cumque quam fuga ullam, itaque ea dignissimos asperiores adipisci ad eveniet repellendus!</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit earum voluptas officia, quasi saepe et commodi, dolores cumque quam fuga ullam, itaque ea dignissimos asperiores adipisci ad eveniet repellendus!</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit earum voluptas officia, quasi saepe et commodi, dolores cumque quam fuga ullam, itaque ea dignissimos asperiores adipisci ad eveniet repellendus!</p>
-                </article>
-                <article>
-                    <h2>Headline</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit earum voluptas officia, quasi saepe et commodi, dolores cumque quam fuga ullam, itaque ea dignissimos asperiores adipisci ad eveniet repellendus!</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit earum voluptas officia, quasi saepe et commodi, dolores cumque quam fuga ullam, itaque ea dignissimos asperiores adipisci ad eveniet repellendus!</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit earum voluptas officia, quasi saepe et commodi, dolores cumque quam fuga ullam, itaque ea dignissimos asperiores adipisci ad eveniet repellendus!</p>
-                </article>
-            </section>
         </div>
     );
 

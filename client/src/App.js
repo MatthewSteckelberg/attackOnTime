@@ -21,13 +21,13 @@ function App() {
   };
   console.log('app: ' + timer)
 
-const timerIsRunning = localStorage.getItem("timer")
-console.log('local: ' + timerIsRunning)
+  const timerIsRunning = localStorage.getItem("timer")
+  console.log('local: ' + timerIsRunning)
 
-  
-  useEffect( () => {
+
+  useEffect(() => {
     const existingTimer = localStorage.getItem('timer');
-    if( existingTimer) {
+    if (existingTimer) {
       setTimer(existingTimer);
     }
   })
@@ -37,7 +37,7 @@ console.log('local: ' + timerIsRunning)
 
       <BrowserRouter>
         <TimerContext.Provider value={timerObject}>
-          <Navbar />
+          {/* <Navbar /> */}
           <Switch>
             <Route exact path="/">
               <Homepage timer={timer} />
