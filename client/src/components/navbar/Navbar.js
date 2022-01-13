@@ -1,55 +1,14 @@
 import './navbarStyle.css';
+import React from "react";
+// import { useLocation } from "react-router-dom";
+
 
 function Navbar() {
 
+  // const location = useLocation();
+ 
 
   const timerBox = document.getElementById("timerBox");
-
-  function AdjustingInterval(workFunc, interval, errorFunc) {
-    var that = this;
-    var expected, timeout;
-    this.interval = interval;
-
-    this.start = function () {
-        expected = Date.now() + this.interval;
-        timeout = setTimeout(step, this.interval);
-    }
-
-    this.stop = function () {
-        clearTimeout(timeout);
-    }
-
-    function step() {
-        var drift = Date.now() - expected;
-        if (drift > that.interval) {
-            // You could have some default stuff here too...
-            if (errorFunc) errorFunc();
-        }
-        workFunc();
-        expected += that.interval;
-        timeout = setTimeout(step, Math.max(0, that.interval - drift));
-    }
-}
-
-// For testing purposes, we'll just increment
-// this and send it out to the console.
-var justSomeNumber = 0;
-let totalTime = 0;
-
-// Define the work to be done
-var doWork = function () {
-    totalTime = ++justSomeNumber
-    console.log(totalTime);
-    timerBox.innerHTML = totalTime;
-};
-
-// Define what to do if something goes wrong
-var doError = function () {
-    console.warn('The drift exceeded the interval.');
-};
-
-// (The third argument is optional)
-var ticker = new AdjustingInterval(doWork, 1000, doError);
 
 
   return (
@@ -61,14 +20,14 @@ var ticker = new AdjustingInterval(doWork, 1000, doError);
       </button>
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
-          <li className="nav-item active">
-            <a className="nav-link" id="home-link" href="/">Home <span className="sr-only">(current)</span></a>
+          <li className="nav-item">
+            <a className="nav-link active" id="home-link" href="/">Home <span className="sr-only">(current)</span></a>
           </li>
           <li className="nav-item">
             <a className="nav-link" id="login-link" href="/Login">Login</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" id="description-link" href="/#">Game Descriptions</a>
+            <a className="nav-link" id="description-link" href="/descriptions">Game Descriptions</a>
           </li>
           <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

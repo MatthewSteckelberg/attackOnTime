@@ -11,6 +11,12 @@
     text-shadow: 2px 2px 2px #118AB2;
 }
 
+.nav-link .active {
+    color:#118AB2;
+    margin-left: 15px;
+    text-shadow: 2px 2px 2px #073b4c;
+}
+
 nav {
     border-bottom: 5px solid #ef476f;
 }
