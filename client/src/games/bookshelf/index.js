@@ -1,4 +1,5 @@
 import './index.css';
+import Navbar from '../../components/navbar/Navbar';
 // import './media.css';
 
 
@@ -17,8 +18,9 @@ function Bookshelf() {
 
     return (
         <div className='bookshelf-game'>
+
             <h1 id="game-instructions">I want to read the Great Gatsby</h1>
-            <a hidden className='col-md-2 btn' id='next-button' href="/" type='submit'>NEXT</a>
+            <a hidden className='col-md-2 btn' id='next-button' href="/flashlight" type='submit'>NEXT</a>
             <br />
             {/* <h2 id="timerBox"></h2> */}
 
