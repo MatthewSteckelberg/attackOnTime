@@ -1,7 +1,4 @@
 /* Flashlight Overlay */
-
-
-
 :root{
   --cursorX: 50vw;
   --cursorY: 50vh;
@@ -13,7 +10,6 @@
   );
   --mouse: none;
 }
-
 
 :global .flashlightGame {
   position: absolute;
@@ -37,11 +33,5 @@
   position: fixed;
   pointer-events: none;
 
-
   background: var(--flashlight);
-}
-
-#lightSwitch {
-  width:20000px;
-  height:25000px;
 }

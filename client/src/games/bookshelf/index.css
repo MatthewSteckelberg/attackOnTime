@@ -1,23 +1,62 @@
 :root {
     --columns: 3;
+    --yellow: #ffd166;
+    --pink: #ef476f;
+    --blue: #118ab2;
+    --green: #06d6a0;
+    --white: rgba(248, 255, 229, 1);
+
+/* 
     --yellow: rgba(238, 188, 31, 1);
     --pink: rgba(255, 82, 145, 1);
     --blue: rgba(64, 98, 187, 1);
     --green: rgba(6, 141, 126, 1);
-    --white: rgba(248, 255, 229, 1);
+    --white: rgba(248, 255, 229, 1); */
+
   }
   
-  body{
-    background-color: #182028;
+  .bookshelf-game {
+    /* background-color: #182028; */
+    background-color: #073b4c;
+    width:100%;
   }
+  .bookshelf-game .btn {
+    font-family: "Audiowide", sans-serif;
+    color:#118AB2;
+    box-shadow: 5px 5px 5px #ef476f;
+    background-color: #FFD166;
+    border-radius: 15px;
+    outline-offset: 3px;
+    margin-top:5%;
+    margin-bottom: 1%;
+    font-size:50px;
+    font-weight:bold;
+    letter-spacing: 15px;
+}
+
+
   
-  ul{
-    display:grid;
+#game-instructions {
+  font-family: "Audiowide", sans-serif;
+  color:#ffd166;
+  padding-top: 2%;
+  margin-bottom: 1%;
+  font-size: 70px;
+  text-shadow: 5px 5px 5px #ef476f;
+  transform: rotate(-1deg);
+  letter-spacing: 10px;
+
+}
+
+  .bookshelf-game ul{
+    list-style-type: none;
+    display: grid;
     grid-template-columns: repeat(var(--columns),1fr);
     margin: 200px -40px;
+
   }
   
-  li{
+  .bookshelf-game li{
     grid-column-end: span 2;
     position: relative;
     width: 100%;
@@ -25,11 +64,11 @@
     margin-top: -50%;
   }
   
-  li:nth-child(2n){
+  .bookshelf-game li:nth-child(2n){
     grid-column-start:2;
   }
   
-  li::before, li::after {
+  .bookshelf-game li::before, .bookshelf-game li::after {
     content:'';
     position: absolute;
     display: block;
@@ -39,7 +78,7 @@
     background-position: left, right;
   }
   
-  li::before{
+  .bookshelf-game li::before{
     z-index: -10;
     clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
     -webkit-clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
@@ -47,46 +86,46 @@
     background-image: linear-gradient(-45deg,var(--yellow) 53.5%,var(--green) 53.5%,var(--green) 60%,var(--yellow) 60%), linear-gradient(45deg,var(--yellow) 53.5%,var(--green) 53.5%,var(--green) 60%,var(--yellow) 60%);
   }
   
-  li::after{
+  .bookshelf-game li::after{
     clip-path: polygon(100% 50%, 50% 100%, 0 50%, 20% 50%, 50% 80%,80% 50%);
     -webkit-clip-path: polygon(100% 50%, 50% 100%, 0 50%, 20% 50%, 50% 80%,80% 50%);
     background-repeat: no-repeat;
     background-image: linear-gradient(45deg,var(--yellow) 40%,var(--green) 40%), linear-gradient(-45deg,var(--yellow) 40%,var(--green) 40%);
   }
   
-  li:nth-child(2n)::before{
+  .bookshelf-game li:nth-child(2n)::before{
     background-image: linear-gradient(-45deg,var(--pink) 53.5%,var(--blue) 53.5%,var(--blue) 60%,var(--pink) 60%), linear-gradient(45deg,var(--pink) 53.5%,var(--blue) 53.5%,var(--blue) 60%,var(--pink) 60%);
   }
   
-  li:nth-child(2n)::after{
+  .bookshelf-game li:nth-child(2n)::after{
     background-image: linear-gradient(45deg,var(--pink) 40%,var(--blue) 40%), linear-gradient(-45deg,var(--pink) 40%,var(--blue) 40%);
   }
   
-  li:nth-child(5n)::before{
+  .bookshelf-game li:nth-child(5n)::before{
     background-image: linear-gradient(-45deg,var(--green) 53.5%,var(--pink) 53.5%,var(--pink) 60%,var(--green) 60%), linear-gradient(45deg,var(--green) 53.5%,var(--pink) 53.5%,var(--pink) 60%,var(--green) 60%);
   }
   
-  li:nth-child(5n)::after{
+  .bookshelf-game li:nth-child(5n)::after{
     background-image: linear-gradient(45deg,var(--green) 40%,var(--pink) 40%), linear-gradient(-45deg,var(--green) 40%,var(--pink) 40%);
   }
   
-  li:nth-child(7n)::before,li:nth-child(7n-4)::before{
+  .bookshelf-game li:nth-child(7n)::before,li:nth-child(7n-4)::before{
     background-image: linear-gradient(-45deg,var(--blue) 53.5%,var(--white) 53.5%,var(--white) 60%,var(--blue) 60%), linear-gradient(45deg,var(--blue) 53.5%,var(--white) 53.5%,var(--white) 60%,var(--blue) 60%);
   }
   
-  li:nth-child(7n)::after,li:nth-child(7n-4)::after{
+  .bookshelf-game li:nth-child(7n)::after,li:nth-child(7n-4)::after{
     background-image: linear-gradient(45deg,var(--blue) 40%,var(--white) 40%), linear-gradient(-45deg,var(--blue) 40%,var(--white) 40%);
   }
   
-  li:nth-child(9n)::before,li:nth-child(9n-5)::before{
+  .bookshelf-game li:nth-child(9n)::before,li:nth-child(9n-5)::before{
     background-image: linear-gradient(-45deg,var(--white) 53.5%,var(--green) 53.5%,var(--green) 60%,var(--white) 60%), linear-gradient(45deg,var(--white) 53.5%,var(--green) 53.5%,var(--green) 60%,var(--white) 60%);
   }
   
-  li:nth-child(9n)::after,li:nth-child(9n-5)::after{
+  .bookshelf-game li:nth-child(9n)::after,li:nth-child(9n-5)::after{
     background-image: linear-gradient(45deg,var(--white) 40%,var(--green) 40%), linear-gradient(-45deg,var(--white) 40%,var(--green) 40%);
   }
   
-  img{
+  .bookshelf-game img{
     position: absolute;
     width: 43%;
     left: 50%;
@@ -97,22 +136,23 @@
     transition-duration: .3s;
   }
   
-  img:hover{
+  .bookshelf-game img:hover{
     transform: translateX(-40%) translateY(-70%) rotatez(25deg);
   }
+  
   @media (min-width:450px){
-    ul{
-      margin: 190px 40px;
+    .bookshelf-game ul{
+      margin: 190px -40px;
     }
   }
   @media (min-width:600px){
     :root {
       --columns: 5;
     }
-    li:nth-child(2n){
+    .bookshelf-game li:nth-child(2n){
       grid-column-start:auto;
     }
-    li:nth-child(4n-1){
+    .bookshelf-game li:nth-child(4n-1){
       grid-column-start:2;
     }
   }
@@ -120,10 +160,10 @@
     :root {
       --columns: 7;
     }
-    li:nth-child(4n-1){
+    .bookshelf-game li:nth-child(4n-1){
       grid-column-start:auto;
     }
-    li:nth-child(6n-2){
+    .bookshelf-game li:nth-child(6n-2){
       grid-column-start:2;
     }
   }
@@ -131,10 +171,10 @@
     :root {
       --columns: 9;
     }
-    li:nth-child(6n-2){
+    .bookshelf-game li:nth-child(6n-2){
       grid-column-start:auto;
     }
-    li:nth-child(8n-3){
+    .bookshelf-game li:nth-child(8n-3){
       grid-column-start:2;
     }
   }
@@ -142,10 +182,10 @@
     :root {
       --columns: 11;
     }
-    li:nth-child(8n-3){
+    .bookshelf-game li:nth-child(8n-3){
       grid-column-start:auto;
     }
-    li:nth-child(10n-4){
+    .bookshelf-game li:nth-child(10n-4){
       grid-column-start:2;
     }
   }
@@ -153,10 +193,10 @@
     :root {
       --columns: 13;
     }
-    li:nth-child(10n-4){
+    .bookshelf-game li:nth-child(10n-4){
       grid-column-start:auto;
     }
-    li:nth-child(12n-5){
+    .bookshelf-game li:nth-child(12n-5){
       grid-column-start:2;
     }
   }
@@ -164,12 +204,12 @@
     :root {
       --columns: 15;
     }
-    li:nth-child(12n-5){
+    .bookshelf-game li:nth-child(12n-5){
       grid-column-start:auto;
     }
-    li:nth-child(14n-6){
+    .bookshelf-game li:nth-child(14n-6){
       grid-column-start:2;
     }
   }
   
-  
+   

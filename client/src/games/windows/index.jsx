@@ -1,10 +1,11 @@
 import { gsap } from "gsap";
 import $ from 'jquery'; 
 import './style.css';
-//import './index.html';
+import React from 'react';
+
+let xPos = 0;
 
 function BayWindow() {
-    let xPos = 0;
 
     gsap.timeline()
         .set('.ring', { rotationY:180, cursor:'grab' }) //set initial rotationY so the parallax jump happens off screen
@@ -34,8 +35,8 @@ function BayWindow() {
     
     $(window).on('mousedown touchstart', dragStart);
     $(window).on('mouseup touchend', dragEnd);
-          
-    
+   
+  
     function dragStart(e){ 
       if (e.touches) e.clientX = e.touches[0].clientX;
       xPos = Math.round(e.clientX);
@@ -43,7 +44,7 @@ function BayWindow() {
       $(window).on('mousemove touchmove', drag);
     }
     
-    
+
     function drag(e){
       if (e.touches) e.clientX = e.touches[0].clientX;    
     
@@ -66,36 +67,33 @@ function BayWindow() {
       return ( 100-gsap.utils.wrap(0,360,gsap.getProperty('.ring', 'rotationY')-180-i*36)/360*500 )+'px 0px';
     }
     
-    document.getElementById("thisOne").addEventListener("click", foundIt);
+    // document.getElementById("thisOne").addEventListener("click", foundIt);
     
     function foundIt(e) {
         e.preventDefault();
         alert("found it!")
     }
-
-    return (
-        <div className="windows-main">
-            <h1 id="header"> Find the Dog</h1>
-            <div class="stage">
-
-                <div class="container">
-                    <div class="ring">
-                        <div class="img"></div>
-                        <div class="img"></div>
-                        <div class="img"></div>
-                        <div class="img"></div>
-                        <div class="img"></div>
-                        <div class="img"></div>
-                        <div class="img"></div>
-                        <div class="img"></div>
-                        <div class="img" id="thisOne"></div>
-                        <div class="img"></div>
-                    </div>
-                </div>
-
-            </div>
+       
+    return(
+      <div className="windows-main">
+      <div class="stage">
+          <h1 id="header">Findthe Dog</h1>
+        <div class="container">
+          <div class="ring">
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img" id="thisOne"></div>
+            <div class="img"></div>
+          </div>
         </div>
-    )
-}
+      </div>
+      </div>
+  )}
 
 export default BayWindow;

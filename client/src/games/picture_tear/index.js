@@ -1,7 +1,10 @@
-console.clear();
-
 import * as THREE from 'https://cdn.skypack.dev/three@0.125.0';
 import gsap from "https://cdn.skypack.dev/gsap@3.5.1";
+import './index.scss';
+
+function App(){
+
+console.clear();
 
 const BackgroundGradient = (colorA, colorB) => {
     var mesh = new THREE.Mesh(
@@ -594,6 +597,7 @@ const extraImages = [
 ]
 const postInitTextureLoader = new THREE.TextureLoader()    
 
+
 const getMousePos = (x, y) =>
 {
     return {
@@ -644,6 +648,7 @@ const loadExtraPhoto = () =>
         colors: nextImage.colors
     })
 }
+
 
 const addNewPhoto = () => 
 {
@@ -738,5 +743,7 @@ const hideHand = () =>
 
 setTimeout(() => showHand(), 5000)
 
+}
+export default App;
 
 
