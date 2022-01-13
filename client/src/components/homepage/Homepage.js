@@ -46,14 +46,14 @@ function Homepage() {
     var doWork = function () {
         timerTime = ++justSomeNumber
         updateTimeState(timerTime);
-        // timerBox.innerHTML = timerTime;
-        // setTotalTime(timerTime);
+        timerBox.innerHTML = timerTime;
+        setTotalTime(timerTime);
         console.log('timer: ' + timerTime)
-        // console.log('state: ' + totalTime);
+        console.log('state: ' + totalTime);
     };
 
     const updateTimeState = (time) => {
-        setTotalTime(parseInt(time));
+        setTotalTime(time);
         console.log('state: ' + totalTime);
         console.log('time: ' + time)
     }
