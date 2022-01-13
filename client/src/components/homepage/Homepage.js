@@ -5,6 +5,7 @@ import TimerContext from '../TimerContext';
 function Homepage() {
     const timerManager = useContext(TimerContext);
     const [totalTime, setTotalTime] = useState(0);
+
     const [timerIsRunning, setTimerIsRunning] = useState(false);
     const timerBox = document.getElementById("timerBox");
     const time = document.getElementById('time-goes-here');
@@ -33,6 +34,7 @@ console.log('manager: ' + timerManager.timer)
         localStorage.removeItem('timer')
         // setTotalTime(0)
     }
+
 
 
     return (
