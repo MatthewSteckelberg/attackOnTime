@@ -5,7 +5,7 @@ use attack_prod;
 create table users( 
 	user_id int primary key auto_increment,
     user_name varchar(50) not null unique,
-    password varchar(50) not null,
+    password varchar(2048) not null,
     high_score int,
 	disabled boolean not null default(0)
 );

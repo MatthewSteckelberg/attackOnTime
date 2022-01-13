@@ -17,7 +17,7 @@ public class GameJdbcTemplateRepository implements GameRepository{
 
     @Override
     public List<Game> findAll() {
-        final String sql = "select game_name, game_description from games;";
+        final String sql = "select game_id, game_name, game_description from games;";
         return jdbcTemplate.query(sql, new GameMapper());
     }
 }
