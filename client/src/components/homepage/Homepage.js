@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 
 function Homepage() {
     const [totalTime, setTotalTime] = useState(0);
+
     const [timerIsRunning, setTimerIsRunning] = useState(false);
 
     const timerBox = document.getElementById("timerBox");
@@ -19,6 +20,7 @@ function Homepage() {
           }
           return () => clearInterval(interval);
         }, [timerIsRunning, totalTime]);
+
 
 
     return (
