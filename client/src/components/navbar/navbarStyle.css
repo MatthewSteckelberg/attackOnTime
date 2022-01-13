@@ -1,0 +1,36 @@
+.navbar {
+    background-color: #ffd166;
+    font-family: "Audiowide", sans-serif;
+    font-size: 35px;
+    color:#073b4c
+    }
+
+#home-link, #login-link, #description-link, #navbarDropdownMenuLink {
+    color: #073b4c;
+    margin-left: 15px;
+    text-shadow: 2px 2px 2px #118AB2;
+}
+
+.nav-link .active {
+    color:#118AB2;
+    margin-left: 15px;
+    text-shadow: 2px 2px 2px #073b4c;
+}
+
+nav {
+    border-bottom: 5px solid #ef476f;
+}
+
+.dropdown-menu {
+    background-color: #ffd166;
+    border-bottom: 5px solid #ef476f;
+     /* border-left: 5px solid #ef476f; */
+    border-right: 5px solid #ef476f;
+    
+}
+
+.dropdown-item {
+    color:#073b4c;
+    font-size: 25px;
+}
+
