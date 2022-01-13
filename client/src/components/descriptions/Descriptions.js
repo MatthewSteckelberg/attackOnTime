@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './descriptionsStyle.css';
+import Navbar from '../navbar/Navbar';
 
 function Descriptions() {
     const [gamelist, setgamelist] = useState([]);
@@ -19,6 +20,7 @@ function Descriptions() {
 
     return (
         <div className='descriptions'>
+            <Navbar />
             {gamelist.map((games) => (<div key={games.gameId}><h2 className='description-header'>{games.name}</h2> 
             <p className='game-description'>{games.description}</p></div> ))}    
 
