@@ -15,60 +15,6 @@ function Bookshelf() {
         // alert(`You found it in ${totalTime} seconds`);
     }
 
-
-    const timerBox = document.getElementById("timerBox");
-
-    console.log("ticker");
-
-
-    // timer stuff
-
-    function AdjustingInterval(workFunc, interval, errorFunc) {
-        var that = this;
-        var expected, timeout;
-        this.interval = interval;
-
-        this.start = function () {
-            expected = Date.now() + this.interval;
-            timeout = setTimeout(step, this.interval);
-        }
-
-        this.stop = function () {
-            clearTimeout(timeout);
-        }
-
-        function step() {
-            var drift = Date.now() - expected;
-            if (drift > that.interval) {
-                // You could have some default stuff here too...
-                if (errorFunc) errorFunc();
-            }
-            workFunc();
-            expected += that.interval;
-            timeout = setTimeout(step, Math.max(0, that.interval - drift));
-        }
-    }
-
-    // For testing purposes, we'll just increment
-    // this and send it out to the console.
-    var justSomeNumber = 0;
-    let totalTime = 0;
-
-    // Define the work to be done
-    var doWork = function () {
-        totalTime = ++justSomeNumber
-        console.log(totalTime);
-        timerBox.innerHTML = totalTime;
-    };
-
-    // Define what to do if something goes wrong
-    var doError = function () {
-        console.warn('The drift exceeded the interval.');
-    };
-
-    // (The third argument is optional)
-    var ticker = new AdjustingInterval(doWork, 1000, doError);
-
     return (
         <div className='bookshelf-game'>
             <h1 id="game-instructions">I want to read the Great Gatsby</h1>

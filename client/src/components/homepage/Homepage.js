@@ -1,70 +1,26 @@
 import './homepage.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Homepage() {
     const [totalTime, setTotalTime] = useState(0);
 
+    const [timerIsRunning, setTimerIsRunning] = useState(false);
 
-    const startTimer = (e) => {
-        e.preventDefault();
-        ticker.start();
-    };
-    const timerBox = document.getElementById('timerBox');
+    const timerBox = document.getElementById("timerBox");
+        useEffect(() => {
+          let interval = null;
+          if (timerIsRunning) {
+            interval = setInterval(() => {
+              setTotalTime(totalTime => totalTime + 1);
+              // this timerbox is just a test for now
+              timerBox.innerHTML = totalTime;  
+            }, 1000);
+          } else if (!timerIsRunning && totalTime !== 0) {
+            clearInterval(interval);
+          }
+          return () => clearInterval(interval);
+        }, [timerIsRunning, totalTime]);
 
-    function AdjustingInterval(workFunc, interval, errorFunc) {
-        var that = this;
-        var expected, timeout;
-        this.interval = interval;
-
-        this.start = function () {
-            expected = Date.now() + this.interval;
-            timeout = setTimeout(step, this.interval);
-        }
-
-        this.stop = function () {
-            clearTimeout(timeout);
-        }
-
-        function step() {
-            var drift = Date.now() - expected;
-            if (drift > that.interval) {
-                // You could have some default stuff here too...
-                if (errorFunc) errorFunc();
-            }
-            workFunc();
-            expected += that.interval;
-            timeout = setTimeout(step, Math.max(0, that.interval - drift));
-        }
-    }
-
-    // For testing purposes, we'll just increment
-    // this and send it out to the console.
-    var justSomeNumber = 0;
-    let timerTime = 0;
-
-    // Define the work to be done
-    var doWork = function () {
-        timerTime = ++justSomeNumber
-        updateTimeState(timerTime);
-        timerBox.innerHTML = timerTime;
-        setTotalTime(timerTime);
-        console.log('timer: ' + timerTime)
-        console.log('state: ' + totalTime);
-    };
-
-    const updateTimeState = (time) => {
-        setTotalTime(time);
-        console.log('state: ' + totalTime);
-        console.log('time: ' + time)
-    }
-
-    // Define what to do if something goes wrong
-    var doError = function () {
-        console.warn('The drift exceeded the interval.');
-    };
-
-    // (The third argument is optional)
-    var ticker = new AdjustingInterval(doWork, 1000, doError);
 
 
     return (
@@ -73,7 +29,7 @@ function Homepage() {
             <h1 id="main-header">Attack on Time</h1>
             <h2 id='timerBox' ></h2>
 
-            <a className='btn' onClick={startTimer}>Start</a>
+            <a className='btn' onClick={() => {setTimerIsRunning(!timerIsRunning)}}>{timerIsRunning ? "Stop" : "Start"}</a>
             <div className='description-box'>
                 <p className="attack-description">Think you have what it takes to play the number one fastest growing </p>
                 <p className="attack-description">reaction time based game in the world. Click the Start if you want to </p>
