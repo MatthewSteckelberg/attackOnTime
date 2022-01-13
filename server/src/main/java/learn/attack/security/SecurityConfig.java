@@ -1,6 +1,5 @@
 package learn.attack.security;
 
-import org.apache.catalina.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -45,6 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //Authenticated
         http.authorizeRequests()
                 .antMatchers( HttpMethod.GET, "/api/highscores").permitAll()
+                .antMatchers( HttpMethod.GET, "/api/games").permitAll()
                 .antMatchers( HttpMethod.POST, "/api/security/authenticate" ).permitAll()
                 .antMatchers( HttpMethod.POST, "/api/highscores" ).authenticated()
                 .antMatchers( HttpMethod.PUT, "/api/highscores/*" ).hasAnyRole("ADMIN", "USER")

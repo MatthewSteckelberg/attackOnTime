@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @CrossOrigin(origins = {"http://localhost:3000"})
 @RequestMapping("api/highscores")
 
@@ -27,7 +27,7 @@ public class HighScoreController {
         return service.topScores();
     }
 
-    @GetMapping
+    @PostMapping
     public ResponseEntity<Object> add(@RequestBody HighScore highScore){
         Result<HighScore> result = service.add(highScore);
         if(result.isSuccess()){
@@ -36,7 +36,7 @@ public class HighScoreController {
         return ErrorResponse.build(result);
     }
 
-    @GetMapping("/{highScoreId}")
+    @PutMapping("/{highScoreId}")
     public ResponseEntity<Object> update(@PathVariable int highScoreId, @RequestBody HighScore highScore){
         if (highScoreId != highScore.getHighScoreId()) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
