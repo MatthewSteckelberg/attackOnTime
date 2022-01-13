@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
-  const [totalTime, setTotalTime] = useState(0);
+  // const [timer, setTimer] = useState(0);
 
   return (
     <div className="App">
@@ -21,7 +21,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <Homepage />
+            <Homepage  />
           </Route>
           <Route path="/descriptions">
             <Descriptions />
