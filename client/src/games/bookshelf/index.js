@@ -3,7 +3,6 @@ import './index.css';
 
 
 function Bookshelf() {
-    // document.getElementById("gatsby").addEventListener("click", displayAlert);
     // function startTimer() {
     //     ticker.start();
     //     console.log(totalTime)
@@ -119,7 +118,7 @@ function Bookshelf() {
                     <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book06.jpg" alt="" /></li>
                     <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book07.jpg" alt="" /></li>
                     <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book08.jpg" alt="" /></li>
-                    <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book09.jpg" alt="" /></li>
+                    <li><img id="gatsby" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book09.jpg" alt="" onClick={displayAlert} /></li>
                     <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book01.jpg" alt="" /></li>
                     <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book11.jpg" alt="" /></li>
                     <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book13.jpg" alt="" /></li>

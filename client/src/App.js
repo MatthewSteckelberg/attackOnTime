@@ -7,6 +7,7 @@ import DragCounter from './games/drag_counter/index.js';
 import Bookshelf from './games/bookshelf';
 import Login from './components/Login';
 import Picture from './games/picture_tear/index'
+import Homepage from './components/homepage/Homepage';
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
       <Navbar />
       <BrowserRouter>
         <Switch>
+          <Route exact path="/">
+            <Homepage />
+          </Route>
           <Route path="/window">
             <BayWindow />
           </Route>
