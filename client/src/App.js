@@ -12,6 +12,7 @@ import Descriptions from './components/descriptions/Descriptions';
 import HighScores from './components/highScores/HighScores';
 import { useEffect, useState } from 'react';
 import TimerContext from './components/TimerContext';
+import SignUp from './components/signup/SignUp';
 
 
 function App() {
@@ -67,6 +68,9 @@ function App() {
             </Route>
             <Route path="/Login">
               <Login />
+            </Route>
+            <Route path="/signup">
+              <SignUp />
             </Route>
           </Switch>
         </TimerContext.Provider>
