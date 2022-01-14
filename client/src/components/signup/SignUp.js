@@ -18,10 +18,52 @@ function SignUp() {
     }
 
 
-    const handleSubmit = (event) => {
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     alert("Not set up yet.")
+    // }
+
+
+
+    const onSubmitTodo = (event) => {
         event.preventDefault();
-        alert("Not set up yet.")
+
+        const jwt = localStorage.getItem( "jwt_token");
+
+        fetch( "http://localhost:8080/api/todos",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer " + jwt
+                    },
+                    body: JSON.stringify( {description: todo} )
+                }
+        ).then( 
+            (response) => {
+                if( response.status != 201 ){
+                    //todo: show valiation errors properly
+                    console.log( response );
+                } else {
+                    history.push( "/" );
+                }
+
+            }
+        );
+
+
+        //on success we need to do this...
+        history.push( "/" );
     }
+
+
+
+
+
+
+
+
+
 
     return (
         <div className="login-page">
@@ -53,7 +95,7 @@ function SignUp() {
                 </div>
                 <div className="row">
                     <div className='col-md-5'></div>
-                    <button className='col-md-2 btn' type='submit'>Login</button>
+                    <button className='col-md-2 btn' type='submit'>SignUp</button>
                     <div className='col-md-5'></div>
                 </div>
                 <br />
