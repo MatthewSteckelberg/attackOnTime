@@ -48,6 +48,17 @@
 
 }
 
+#wrong-book {
+  font-family: "Audiowide", sans-serif;
+  color:#ffd166;
+  padding-top: 2%;
+  margin-bottom: 1%;
+  font-size: 20px;
+  text-shadow: 5px 5px 5px #ef476f;
+  transform: rotate(-1deg);
+  letter-spacing: 10px;
+}
+
   .bookshelf-game ul{
     list-style-type: none;
     display: grid;
