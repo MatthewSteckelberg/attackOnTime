@@ -36,6 +36,9 @@ function Navbar() {
               <a className="nav-link active" id="home-link" href="/">Home <span className="sr-only">(current)</span></a>
             </li>
             <li className="nav-item">
+              <a className="nav-link" id="signup-link" href="/signup">SignUp</a>
+            </li>
+            <li className="nav-item">
               <a className="nav-link" id="login-link" href="/Login">Login</a>
             </li>
             <li className="nav-item">
