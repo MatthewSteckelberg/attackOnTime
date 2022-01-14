@@ -39,7 +39,7 @@ public class AppUserService implements UserDetailsService {
 
         password = encoder.encode(password);
 
-        AppUser appUser = new AppUser(0, username, password, 0, false, List.of("User"));
+        AppUser appUser = new AppUser(0, username, password,false, List.of("User"));
 
         return repository.create(appUser);
     }

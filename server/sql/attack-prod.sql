@@ -6,7 +6,6 @@ create table users(
 	user_id int primary key auto_increment,
     user_name varchar(50) not null unique,
     password varchar(2048) not null,
-    high_score int,
 	disabled boolean not null default(0)
 );
 
@@ -49,12 +48,12 @@ values
 	('Picture Tear','The Picture Tear is an investigation of wits to test your puzzle solving skills. Deduce the solution and enact the goal with your mouse to move on.');
       
 -- passwords are set to "P@ssw0rd!"
-insert into users (user_name, password, high_score, disabled) values
-	('victory','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa',33,0),
-	('carl','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa',25,0),
-	('matthew','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa',23,0),
-	('gatekeeper','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa',456,0),
-	('captain','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa',85,0);
+insert into users (user_name, password, disabled) values
+	('victory','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa',0),
+	('carl','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa',0),
+	('matthew','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa',0),
+	('gatekeeper','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa',0),
+	('captain','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa',0);
 
 insert into roles (role_name) values
     ('USER'),
@@ -66,11 +65,17 @@ insert into user_roles values
     (3, 2),
     (4, 1),
 	(5, 1);
-    
--- TODO
--- insert into high_scores values (high_score)
---     (33, 1),
---     (25, 2),
---     (23, 3),
---     (456, 4),
--- 	(85, 5);    
+
+ insert into high_scores (high_score, user_id) values
+     (33, 1),
+     (25, 2),
+     (23, 3),
+     (456, 4),
+ 	(85, 5);
+
+select high_scores.high_score_id, high_scores.high_score, users.user_name
+from high_scores
+INNER JOIN users
+ON high_scores.user_id = users.user_id
+order by high_scores.high_score asc
+limit 1000;

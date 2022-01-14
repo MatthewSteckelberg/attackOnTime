@@ -36,7 +36,7 @@ function HighScores() {
                             {scoresList.map(score =>
                                 <tr key={score.highScoreId}>
                                     <td>{score.highScore}</td>
-                                    <td>{score.highScoreId}</td>
+                                    <td>{score.userName}</td>
                                 </tr>)}
                         </tbody>
                     </table>

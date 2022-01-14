@@ -1,10 +1,18 @@
 package learn.attack.models;
 
 public class HighScore {
-
+    private String userName;
     private int highScoreId;
     private int highScore;
     private int userId;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public int getHighScoreId() {
         return highScoreId;

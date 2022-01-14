@@ -15,19 +15,16 @@ public class AppUser extends User {
     private static final String AUTHORITY_PREFIX = "ROLE_";
 
     private int appUserId;
-    private int highScore;
 
-    public AppUser(int appUserId, String username, String password, int highScore,
-                   boolean disabled, List<String> roles) {
+    public AppUser(int appUserId, String username, String password, boolean disabled, List<String> roles) {
         super(username, password, !disabled,
                 true, true, true,
                 convertRolesToAuthorities(roles));
         this.appUserId = appUserId;
-        this.highScore = highScore;
+
     }
 
     private List<String> roles = new ArrayList<>();
-
 
     public int getAppUserId() {
         return appUserId;
@@ -35,14 +32,6 @@ public class AppUser extends User {
 
     public void setAppUserId(int appUserId) {
         this.appUserId = appUserId;
-    }
-
-    public int getHighScore() {
-        return highScore;
-    }
-
-    public void setHighScore(int highScore) {
-        this.highScore = highScore;
     }
 
     public static List<GrantedAuthority> convertRolesToAuthorities(List<String> roles) {
