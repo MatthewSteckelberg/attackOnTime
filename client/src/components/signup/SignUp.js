@@ -1,11 +1,13 @@
 import './loginStyle.css';
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
 
 function SignUp() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("")
+    const history = useHistory();
 
     const updateUsername = (e) => {
         setUsername(e.target.value);
@@ -18,43 +20,43 @@ function SignUp() {
     }
 
 
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     alert("Not set up yet.")
-    // }
-
-
-
-    const onSubmitTodo = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
-
-        const jwt = localStorage.getItem( "jwt_token");
-
-        fetch( "http://localhost:8080/api/todos",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": "Bearer " + jwt
-                    },
-                    body: JSON.stringify( {description: todo} )
-                }
-        ).then( 
-            (response) => {
-                if( response.status != 201 ){
-                    //todo: show valiation errors properly
-                    console.log( response );
-                } else {
-                    history.push( "/" );
-                }
-
-            }
-        );
-
-
-        //on success we need to do this...
-        history.push( "/" );
+        alert("Not set up yet.")
     }
+
+
+
+    // const onSubmitTodo = (event) => {
+    //     event.preventDefault();
+
+    //     const jwt = localStorage.getItem( "jwt_token");
+
+    //     fetch( "http://localhost:8080/api/todos",
+    //             {
+    //                 method: "POST",
+    //                 headers: {
+    //                     "Content-Type": "application/json",
+    //                     "Authorization": "Bearer " + jwt
+    //                 },
+    //                 body: JSON.stringify( {description: todo} )
+    //             }
+    //     ).then( 
+    //         (response) => {
+    //             if( response.status != 201 ){
+    //                 //todo: show valiation errors properly
+    //                 console.log( response );
+    //             } else {
+    //                 history.push( "/" );
+    //             }
+
+    //         }
+    //     );
+
+
+    //     //on success we need to do this...
+    //     history.push( "/" );
+    // }
 
 
 
