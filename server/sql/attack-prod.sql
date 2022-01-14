@@ -66,15 +66,12 @@ insert into user_roles values
     (4, 1),
 	(5, 1);
 
-
  insert into high_scores (high_score, user_id) values
      (33, 1),
      (25, 2),
      (23, 3),
      (456, 4),
  	(85, 5);
-
-
 
 select high_scores.high_score_id, high_scores.high_score, users.user_name
 from high_scores

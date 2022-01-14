@@ -1,5 +1,7 @@
 .home {
 background-color: #073b4c;
+outline-style: solid;
+outline-color: #073b4c;
 font-family: "Audiowide", sans-serif;
 }
 
@@ -14,7 +16,7 @@ font-family: "Audiowide", sans-serif;
     letter-spacing: 15px;
 }
 
-.home .btn {
+.main-btn {
     color:#118AB2;
     box-shadow: 5px 5px 5px #ef476f;
     background-color: #FFD166;
@@ -27,7 +29,7 @@ font-family: "Audiowide", sans-serif;
     
 }
 
-.btn:hover {
+.main-btn:hover {
     background-color:#ffdc8b
 }
 
@@ -41,4 +43,33 @@ font-family: "Audiowide", sans-serif;
     margin-bottom: 5%;
 }
 
+
+#timerBody {
+    margin-top: -1px;
+    width:50%;
+    background-color: #073b4c;
+    /* outline-color: #073b4c;
+    outline-style: solid; */
+    position: absolute;
+}
+
+#time-and-seconds {
+    color:#ffd166
+}
+
+.timer-btn {
+    color:#118AB2;
+    box-shadow: 5px 5px 5px #ef476f;
+    background-color: #FFD166;
+    border-radius: 15px;
+    outline-offset: 3px;
+    margin-bottom: 5%;
+    font-size:25px;
+    letter-spacing: 10px;  
+    width: 30%;
+}
+
+.timer-btn:hover {
+    background-color:#ffdc8b
+}
 

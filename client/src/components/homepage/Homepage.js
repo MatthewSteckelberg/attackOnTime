@@ -1,79 +1,57 @@
 import './homepage.css';
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import TimerContext from '../TimerContext';
+import Navbar from '../navbar/Navbar';
 
 function Homepage() {
+    const timerManager = useContext(TimerContext);
     const [totalTime, setTotalTime] = useState(0);
 
+    const [timerIsRunning, setTimerIsRunning] = useState(false);
+    const timerBox = document.getElementById("timerBox");
+    const time = document.getElementById('time-goes-here');
 
-    const startTimer = (e) => {
-        e.preventDefault();
-        ticker.start();
-    };
-    const timerBox = document.getElementById('timerBox');
+if(timerManager.timer != 0) {
+    timerBox.removeAttribute("hidden");
+}
+console.log('manager: ' + timerManager.timer)
+    useEffect(() => {
+        let interval = null;
+        if (timerIsRunning) {
+            interval = setInterval(() => {
+                setTotalTime(totalTime => totalTime + 1);
+                timerManager.setTimer(totalTime);
 
-    function AdjustingInterval(workFunc, interval, errorFunc) {
-        var that = this;
-        var expected, timeout;
-        this.interval = interval;
-
-        this.start = function () {
-            expected = Date.now() + this.interval;
-            timeout = setTimeout(step, this.interval);
+                time.innerHTML = timerManager.timer;
+                localStorage.setItem("timer", totalTime);
+            }, 1000);
+        } else if (!timerIsRunning && totalTime !== 0) {
+            clearInterval(interval);
         }
+        return () => clearInterval(interval);
+    }, [timerIsRunning, totalTime]);
 
-        this.stop = function () {
-            clearTimeout(timeout);
-        }
-
-        function step() {
-            var drift = Date.now() - expected;
-            if (drift > that.interval) {
-                // You could have some default stuff here too...
-                if (errorFunc) errorFunc();
-            }
-            workFunc();
-            expected += that.interval;
-            timeout = setTimeout(step, Math.max(0, that.interval - drift));
-        }
+    if(!timerIsRunning) {
+        localStorage.removeItem('timer')
+        // setTotalTime(0)
     }
 
-    // For testing purposes, we'll just increment
-    // this and send it out to the console.
-    var justSomeNumber = 0;
-    let timerTime = 0;
-
-    // Define the work to be done
-    var doWork = function () {
-        timerTime = ++justSomeNumber
-        updateTimeState(timerTime);
-        // timerBox.innerHTML = timerTime;
-        // setTotalTime(timerTime);
-        console.log('timer: ' + timerTime)
-        // console.log('state: ' + totalTime);
-    };
-
-    const updateTimeState = (time) => {
-        setTotalTime(parseInt(time));
-        console.log('state: ' + totalTime);
-        console.log('time: ' + time)
-    }
-
-    // Define what to do if something goes wrong
-    var doError = function () {
-        console.warn('The drift exceeded the interval.');
-    };
-
-    // (The third argument is optional)
-    var ticker = new AdjustingInterval(doWork, 1000, doError);
 
 
     return (
         <div className="home">
-
+            <Navbar />
+            <div hidden class="card" id='timerBox'>
+                <div class="card-body row" id="timerBody">
+                   <h2 id='time-and-seconds'><span className='col-md-7'id="time-goes-here"></span> Seconds</h2>
+                   <div className='col-md-1'></div>
+                   {/* <button className='btn timer-btn col-md-4' onClick={() => { setTimerIsRunning(!timerIsRunning) }}>{timerIsRunning ? "Stop" : "Play Again"}</button> */}
+                </div>
+            </div>
             <h1 id="main-header">Attack on Time</h1>
-            <h2 id='timerBox' ></h2>
+            <h2  ></h2>
 
-            <a className='btn' onClick={startTimer}>Start</a>
+            <a className='btn main-btn' href='/bookshelf' onClick={() => { setTimerIsRunning(!timerIsRunning) }}>{totalTime > 0 ? "Stop" : "Start"}</a>
             <div className='description-box'>
                 <p className="attack-description">Think you have what it takes to play the number one fastest growing </p>
                 <p className="attack-description">reaction time based game in the world. Click the Start if you want to </p>

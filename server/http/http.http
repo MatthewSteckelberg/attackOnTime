@@ -1,0 +1,18 @@
+GET http://localhost:8080/api/games HTTP/1.1
+
+
+###
+
+GET http://localhost:8080/api/highscores HTTP/1.1
+
+
+###
+POST http://localhost:8080/api/security/authenticate
+Content-Type: application/json
+
+{
+    "username": "matthew",
+    "password": "P@ssword!"
+}
+
+###

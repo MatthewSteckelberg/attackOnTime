@@ -8,43 +8,68 @@ import Bookshelf from './games/bookshelf';
 import Login from './components/login/Login';
 import Picture from './games/picture_tear/index'
 import Homepage from './components/homepage/Homepage';
-import Descriptions from'./components/descriptions/Descriptions';
+import Descriptions from './components/descriptions/Descriptions';
+import HighScores from './components/highScores/HighScores';
 import { useEffect, useState } from 'react';
+import TimerContext from './components/TimerContext';
+
 
 function App() {
 
-  const [totalTime, setTotalTime] = useState(0);
+  const [timer, setTimer] = useState(0);
+  const timerObject = {
+    timer,
+    setTimer
+  };
+  console.log('app: ' + timer)
+
+  const timerIsRunning = localStorage.getItem("timer")
+  console.log('local: ' + timerIsRunning)
+
+
+  useEffect(() => {
+    const existingTimer = localStorage.getItem('timer');
+    if (existingTimer) {
+      setTimer(existingTimer);
+    }
+  })
 
   return (
     <div className="App">
-      <Navbar />
+
       <BrowserRouter>
-        <Switch>
-          <Route exact path="/">
-            <Homepage />
-          </Route>
-          <Route path="/descriptions">
-            <Descriptions />
-          </Route>
-          <Route path="/window">
-            <BayWindow />
-          </Route>
-          <Route path="/flashlight">
-            <FlashlightReact />
-          </Route>
-          <Route path="/drag">
-            <DragCounter />
-          </Route>
-          <Route path="/bookshelf">
-            <Bookshelf />
-          </Route>
-          <Route path="/picture">
-            <Picture />
-          </Route>
-          <Route path="/Login">
-            <Login />
-          </Route>
-        </Switch>
+        <TimerContext.Provider value={timerObject}>
+          {/* <Navbar /> */}
+          <Switch>
+            <Route exact path="/">
+              <Homepage timer={timer} />
+            </Route>
+            <Route path="/descriptions">
+              <Descriptions />
+            </Route>
+            <Route path="/highscores">
+              <HighScores />
+            </Route>
+            <Route path="/window">
+              <BayWindow />
+            </Route>
+            <Route path="/flashlight">
+              <FlashlightReact />
+            </Route>
+            <Route path="/drag">
+              <DragCounter />
+            </Route>
+            <Route path="/bookshelf">
+              <Bookshelf />
+            </Route>
+            <Route path="/picture">
+              <Picture />
+            </Route>
+            <Route path="/Login">
+              <Login />
+            </Route>
+          </Switch>
+        </TimerContext.Provider>
       </BrowserRouter>
     </div>
   );

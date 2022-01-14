@@ -1,0 +1,27 @@
+.scores-body {
+    background-color: #073b4c;
+    font-family: "Audiowide", sans-serif;
+    
+}
+
+#scores-header {
+    color: #ffd166;
+    padding-top: 2%;
+    margin-bottom: 3%;
+    font-size: 100px;
+    text-shadow: 5px 5px 5px #ef476f;
+    transform: rotate(-2deg);
+    letter-spacing: 15px;
+}
+
+#scores-table {
+    background-color: #118ab2;
+    color:#ffd166;
+    font-size: 25px;
+    margin-bottom:50%;
+    border-bottom: #ef476f;
+    border-right:#ef476f;
+    border-top:#118ab2;
+    border-left:#118ab2;
+    border-style: solid;
+}

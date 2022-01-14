@@ -11,6 +11,12 @@
   --mouse: none;
 }
 
+img {
+  margin-top:10%;
+  height: 250px;
+}
+
+
 :global .flashlightGame {
   position: absolute;
   left: 0;
@@ -23,6 +29,7 @@
 
   
   border: 3px solid white;
+  background-color:#073b4c;
 }
 :global .flashlightGame:before {
   
