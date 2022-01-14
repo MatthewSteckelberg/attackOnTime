@@ -9,8 +9,10 @@ import Login from './components/login/Login';
 import Picture from './games/picture_tear/index'
 import Homepage from './components/homepage/Homepage';
 import Descriptions from './components/descriptions/Descriptions';
+import HighScores from './components/highScores/HighScores';
 import { useEffect, useState } from 'react';
 import TimerContext from './components/TimerContext';
+
 
 function App() {
 
@@ -44,6 +46,9 @@ function App() {
             </Route>
             <Route path="/descriptions">
               <Descriptions />
+            </Route>
+            <Route path="/highscores">
+              <HighScores />
             </Route>
             <Route path="/window">
               <BayWindow />

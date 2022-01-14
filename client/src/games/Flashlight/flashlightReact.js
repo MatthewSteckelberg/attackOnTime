@@ -43,7 +43,7 @@ function FlashlightReact() {
     return (
 
         <div className="flashlightGame">
-            <h2 id="flashlight-instructions">It's dark in here, turn on the lights</h2>
+            <h2 id="flashlight-instructions">It's dark in here, turn on the lights!</h2>
             <a hidden className='btn' id='light-next-button' href="/" type='submit'>NEXT</a>
             <div id="lightSwitchDiv row">
                 <img className="switch" src={lightOff} alt="light switch" id="lightSwitchOn" onClick={turnOnLights} />

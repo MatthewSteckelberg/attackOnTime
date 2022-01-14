@@ -1,5 +1,6 @@
 import './loginStyle.css';
 import { useState } from 'react';
+import Navbar from '../navbar/Navbar';
 
 function Login() {
     const [username, setUsername] = useState("");
@@ -19,6 +20,7 @@ function Login() {
 
     return (
         <div className="login-page">
+            <Navbar />
             <div id='empty-div'></div>
             <form onSubmit={handleSubmit}>
                 <div className="form-row">

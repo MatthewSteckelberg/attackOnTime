@@ -22,7 +22,10 @@ public class HighScoreJdbcTemplateRepository implements HighScoreRepository{
 
     @Override
     public List<HighScore> topScores() {
-        final String sql = "select high_score_id, high_score, user_id from high_scores limit 1000 high_score asc;";
+        final String sql = "select high_score_id, high_score, user_id \n" +
+                " from high_scores\n" +
+                " order by high_score asc\n" +
+                " limit 1000;";
         return jdbcTemplate.query(sql, new HighScoreMapper());
     }
 
