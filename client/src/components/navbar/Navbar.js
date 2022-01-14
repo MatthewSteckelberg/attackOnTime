@@ -41,6 +41,9 @@ function Navbar() {
             <li className="nav-item">
               <a className="nav-link" id="description-link" href="/descriptions">Game Descriptions</a>
             </li>
+            <li className="nav-item">
+              <a className="nav-link" id="description-link" href="/highscores">High Scores</a>
+            </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Games

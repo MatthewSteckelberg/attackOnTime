@@ -28,8 +28,8 @@ function HighScores() {
                     <table className='table' id='scores-table'>
                         <thead>
                             <tr>
-                                <th scope='col'>Score</th>
-                                <th scope='col'>User Name</th>
+                                <th className='table-header' scope='col'>Score</th>
+                                <th className='table-header' scope='col'>User Name</th>
                             </tr>
                         </thead>
                         <tbody>
