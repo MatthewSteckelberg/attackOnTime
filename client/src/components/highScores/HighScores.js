@@ -17,7 +17,7 @@ function HighScores() {
         console.log(scoresList);
     }, []);
 
-
+    let i = 1;
     return (
         <div className='scores-body'>
             <Navbar />
@@ -27,16 +27,19 @@ function HighScores() {
                 <div id='scores-section' className='col-md-6'>
                     <table className='table' id='scores-table'>
                         <thead>
-                            <tr>
-                                <th className='table-header' scope='col'>Score</th>
+                            <tr id='headers-row'>
+
+                                <th className='table-header' scope='col'>Rank</th>
                                 <th className='table-header' scope='col'>User Name</th>
+                                <th className='table-header' scope='col'>Score</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {scoresList.map(score =>
+                            {scoresList.map(score=>
                                 <tr key={score.highScoreId}>
-                                    <td>{score.highScore}</td>
+                                    <td>{i++}</td>
                                     <td>{score.userName}</td>
+                                    <td>{score.highScore}</td>
                                 </tr>)}
                         </tbody>
                     </table>
