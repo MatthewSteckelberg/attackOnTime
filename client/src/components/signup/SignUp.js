@@ -37,7 +37,7 @@ function SignUp() {
                         "Content-Type": "application/json",
                         "Authorization": "Bearer " + jwt
                     },
-                    body: JSON.stringify( {description: todo} )
+                    body: JSON.stringify( {description: username} )
                 }
         ).then( 
             (response) => {
@@ -45,7 +45,7 @@ function SignUp() {
                     //todo: show valiation errors properly
                     console.log( response );
                 } else {
-                    history.push( "/" );
+                    // history.push( "/" );
                 }
 
             }
@@ -53,17 +53,11 @@ function SignUp() {
 
 
         //on success we need to do this...
-        history.push( "/" );
+        // history.push( "/" );
     }
-
-
-
-
-
-
-
-
-
+    const handleSubmit = () => {
+        console.log('nope')
+    }
 
     return (
         <div className="login-page">

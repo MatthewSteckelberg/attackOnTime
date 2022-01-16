@@ -10,40 +10,21 @@ import Picture from './games/picture_tear/index'
 import Homepage from './components/homepage/Homepage';
 import Descriptions from './components/descriptions/Descriptions';
 import HighScores from './components/highScores/HighScores';
-import { useEffect, useState } from 'react';
-import TimerContext from './components/TimerContext';
+
 import SignUp from './components/signup/SignUp';
 
 
 function App() {
 
-  const [timer, setTimer] = useState(0);
-  const timerObject = {
-    timer,
-    setTimer
-  };
-  console.log('app: ' + timer)
-
-  const timerIsRunning = localStorage.getItem("timer")
-  console.log('local: ' + timerIsRunning)
-
-
-  useEffect(() => {
-    const existingTimer = localStorage.getItem('timer');
-    if (existingTimer) {
-      setTimer(existingTimer);
-    }
-  })
 
   return (
     <div className="App">
 
       <BrowserRouter>
-        <TimerContext.Provider value={timerObject}>
           {/* <Navbar /> */}
           <Switch>
             <Route exact path="/">
-              <Homepage timer={timer} />
+              <Homepage />
             </Route>
             <Route path="/descriptions">
               <Descriptions />
@@ -73,7 +54,6 @@ function App() {
               <SignUp />
             </Route>
           </Switch>
-        </TimerContext.Provider>
       </BrowserRouter>
     </div>
   );
