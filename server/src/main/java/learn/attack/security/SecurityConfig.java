@@ -44,6 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //Authenticated
         http.authorizeRequests()
                 .antMatchers( HttpMethod.GET, "/api/highscores").permitAll()
+                .antMatchers( HttpMethod.GET, "/api/users").permitAll() //TODO change back to admin role
                 .antMatchers( HttpMethod.POST, "/api/adduser").permitAll()
                 .antMatchers( HttpMethod.GET, "/api/games").permitAll()
                 .antMatchers( HttpMethod.POST, "/api/security/authenticate" ).permitAll()

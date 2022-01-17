@@ -2,19 +2,9 @@ import './navbarStyle.css';
 import { Link, useLocation } from 'react-router-dom';
 
 function Navbar() {
-  const [currentUser, setCurrentUser] = useState(null);
 
-  const userObject = {
-    currentUser,
-    setCurrentUser
-  };
-  
   const location = useLocation();
 
-  const onLogout = () => {
-    localStorage.removeItem("jwt_token");
-    setCurrentUser(null);
-  }
 
   return (
     <>
@@ -35,7 +25,7 @@ function Navbar() {
                 SignUp
               </Link>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
 
 
 
@@ -44,7 +34,7 @@ function Navbar() {
               <Link className="nav-link" id="login-link" to="/Login" >
                 Login
               </Link>}
-            </li>
+            </li> */}
             <li className="nav-item">
               <Link className="nav-link" id="description-link" to="/descriptions">
                 Game Descriptions
