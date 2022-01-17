@@ -30,6 +30,7 @@ function SignUp() {
     // const onSubmitTodo = (event) => {
     //     event.preventDefault();
 
+
     //     const jwt = localStorage.getItem( "jwt_token");
 
     //     fetch( "http://localhost:8080/api/todos",
@@ -57,14 +58,6 @@ function SignUp() {
     //     //on success we need to do this...
     //     history.push( "/" );
     // }
-
-
-
-
-
-
-
-
 
 
     return (

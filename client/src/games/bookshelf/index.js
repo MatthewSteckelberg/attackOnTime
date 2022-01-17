@@ -1,26 +1,20 @@
 import './index.css';
 import Navbar from '../../components/navbar/Navbar';
-import { useEffect } from 'react';
-// import './media.css';
+import { useEffect, useState } from 'react';
+import Timer from '../../components/timer/Timer';
 
 
 function Bookshelf() {
-    // function startTimer() {
-    //     ticker.start();
-    //     console.log(totalTime)
-    // };
-
-    const bookID = Math.floor(Math.random() * 34);
+    const bookID = Math.floor(Math.random() * 34 +1);
     const displayAlert = (bookNumber) => {
         // e.preventDefault();
         console.log(bookNumber)
-        const correctBook = document.getElementsByClassName(`book-${bookID}`).alt
+
         if (bookNumber == bookID) {
-            // document.getElementById('wrong-book').innerHTML = `Awesome, thank you. I've always wanted to read ${correctBook[0].alt}.`;
-            document.getElementById('game-instructions').hidden = true;
             document.getElementById('wrong-book').hidden = true;
-            document.getElementById('next-button').removeAttribute("hidden");
-           
+            document.getElementById('next-box').removeAttribute("hidden");
+            document.getElementById('game-instructions').hidden = true;
+
         } else {
             const wrongBook = document.getElementsByClassName(`book-${bookNumber}`)
             document.getElementById('wrong-book').innerHTML = `No, not ${wrongBook[0].alt}`;
@@ -30,7 +24,9 @@ function Bookshelf() {
         // alert(`You found it in ${totalTime} seconds`);
     }
 
+
     //making a random book the goal
+
     useEffect(() => {
         console.log(bookID)
 
@@ -46,18 +42,20 @@ function Bookshelf() {
         document.getElementById("book-name").innerHTML = bookName;
     })
 
-    // randomBook();
+
 
     return (
         <div className='bookshelf-game'>
-            <div id='instruction-section'>
-                <h1 id="game-instructions">I want to read <span id='book-name'>The Great Gatsby</span></h1>
-                <h3 id="wrong-book"></h3>
-                <a hidden className='btn' id='next-button' href="/flashlight" type='submit'>NEXT</a>
+            <h1 id="game-instructions">I want to read <span id='book-name'>The Great Gatsby</span></h1>
+            <h3 id="wrong-book"></h3>
+            <div hidden id='next-box'>
+                <Timer />
             </div>
+
+            {/* <a hidden className='col-md-2 btn' id='next-button' href="/flashlight" type='submit' >NEXT</a> */}
+
             <br />
             {/* <h2 id="timerBox"></h2> */}
-
             <div className='bookshelf-body'>
                 <ul>
                     <li><img className="book-10" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book10.jpg" alt="The Nowhere Girls" onClick={() => displayAlert(10)} /></li>
