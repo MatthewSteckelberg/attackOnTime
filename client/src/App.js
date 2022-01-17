@@ -10,9 +10,8 @@ import Homepage from './components/homepage/Homepage';
 import Descriptions from './components/descriptions/Descriptions';
 import HighScores from './components/highScores/HighScores';
 import jwtDecode from 'jwt-decode';
-import Navbar from './components/navbar/Navbar';
-import {useEffect, useState} from 'react';
-import UserContext from './components/UserContext'
+import { useEffect, useState } from 'react';
+import UserContext from './components/UserContext';
 
 import SignUp from './components/signup/SignUp';
 
@@ -46,19 +45,18 @@ function App() {
 
   return (
     <div className="App">
-
       <BrowserRouter>
-      <UserContext.Provider value={userObject}>
+        <UserContext.Provider value={userObject}>
           {/* <Navbar userObject={userObject}/> */}
           <Switch>
             <Route exact path="/">
-              <Homepage userObject={userObject}/>
+              <Homepage userObject={userObject} />
             </Route>
             <Route path="/descriptions">
-              <Descriptions userObject={userObject}/>
+              <Descriptions userObject={userObject} />
             </Route>
             <Route path="/highscores">
-              <HighScores userObject={userObject}/>
+              <HighScores userObject={userObject} />
             </Route>
             <Route path="/window">
               <BayWindow />
@@ -76,16 +74,16 @@ function App() {
               <Picture />
             </Route>
             <Route path="/Login">
-              <Login userObject={userObject}/>
+              <Login userObject={userObject} />
             </Route>
             <Route path="/signup">
-              <SignUp userObject={userObject}/>
+              <SignUp userObject={userObject} />
             </Route>
             {/* <Route exact path="/users">
             {currentUser ? <Users /> : <Redirect to="/"/>}
           </Route> */}
           </Switch>
-          </UserContext.Provider>
+        </UserContext.Provider>
       </BrowserRouter>
     </div>
   );
