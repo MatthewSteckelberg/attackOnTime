@@ -2,15 +2,16 @@ import './loginStyle.css';
 import { useState } from 'react';
 import Navbar from '../navbar/Navbar';
 import { useHistory } from 'react-router-dom';
-const DEFAULT_USER ={
-    user_name="",
-    password = "",
-    disabled=false
-}
+const DEFAULT_USER = {
+    user_name:"",
+    password:"",
+    disabled:false,
+    roles:["USER"]
+};
 
 
 function SignUp() {
-    const[user,setUser] = useState("")
+    const[user,setUser] = useState(DEFAULT_USER)
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("")
