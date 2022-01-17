@@ -34,9 +34,11 @@
     letter-spacing: 10px;
 }
 
-.signupError {
-    color: red;
+.signupError, .loginError {
+    color:#ef476f;
+    text-transform: uppercase;
 }
+
 #empty-div {
     background-color: #073b4c;
     height:15px;
