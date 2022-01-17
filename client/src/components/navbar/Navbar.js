@@ -1,5 +1,4 @@
 import './navbarStyle.css';
-import { useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 
@@ -53,13 +52,6 @@ function Navbar() {
                 <Link className="dropdown-item" to="/drag">Drag Counter</Link>
                 <Link className="dropdown-item" to="/bookshelf">Bookshelf</Link>
                 <Link className="dropdown-item" to="/picture">Picture Tear</Link>
-              </div>
-            </li>
-            <li>
-              <div className='timer-box'>
-                <h4 className='time-here'></h4>
-                <a className='start-button' href='/bookshelf' >start</a>
-
               </div>
             </li>
           </ul>

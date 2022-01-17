@@ -2,7 +2,7 @@ import './loginStyle.css';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
-import { useHistory } from 'react-router-dom';
+
 const DEFAULT_USER = {
     user_name:"",
     password:"",
@@ -28,7 +28,6 @@ function SignUp() {
         setPasswordConfirm(e.target.value);
     }
 
-    const history = useHistory();
 
     function validatePassword(){
 

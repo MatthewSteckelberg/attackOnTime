@@ -20,21 +20,27 @@
     background-color: #073b4c;
     width:100%;
   }
+
+  #next-box {
+    position: fixed;
+    z-index: 1000;
+    margin-top:10%;
+    margin-left:40%;
+    margin-bottom: 1%;
+    transform: rotate(-5deg);
+  }
+
   .bookshelf-game .btn {
     font-family: "Audiowide", sans-serif;
     color:#118AB2;
     box-shadow: 10px 10px 10px #ef476f;
     background-color: #FFD166;
     border-radius: 15px;
+    width:100%;
     outline-offset: 3px;
-    margin-top:10%;
-    margin-right:50px;
-    margin-bottom: 1%;
     font-size:100px;
     font-weight:bold;
     letter-spacing: 15px;
-    position: fixed;
-    z-index: 1000;
 }
 
 .bookshelf-body {

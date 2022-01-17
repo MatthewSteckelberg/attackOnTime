@@ -1,38 +1,42 @@
 .flashlightGame {
-    background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/haunted-mansion-04.jpg");
-    height:1000px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
+  background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/haunted-mansion-04.jpg");
+  height:1000px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
 
 #flashlight-instructions {
-    /* font-family: "Audiowide", sans-serif; */
-    color:#ffd166;
-    padding-top: 2%;
-    margin-bottom: 1%;
-    font-size: 40px;
-    text-shadow: 5px 5px 5px #ef476f;
-    transform: rotate(-1deg);
-    letter-spacing: 10px;
-  }
-  
-  .flashlightGame .btn {
-    font-family: "Audiowide", sans-serif;
-    color:#118AB2;
-    box-shadow: 5px 5px 5px #ef476f;
-    background-color: #FFD166;
-    border-radius: 15px;
-    outline-offset: 3px;
-    margin-top:5%;
-    margin-bottom: 1%;
-    font-size:50px;
-    font-weight:bold;
-    letter-spacing: 15px;
-  }
+  /* font-family: "Audiowide", sans-serif; */
+  color:#ffd166;
+  padding-top: 2%;
+  margin-bottom: 1%;
+  font-size: 40px;
+  text-shadow: 5px 5px 5px #ef476f;
+  transform: rotate(-1deg);
+  letter-spacing: 10px;
+}
 
-  .flashlightGame p {
-      color:#FFD166
-  }
+/* .flashlightGame .btn {
+  color:#118AB2;
+  box-shadow: 5px 5px 5px #ef476f;
+  background-color: #FFD166;
+  border-radius: 15px;
+  outline-offset: 3px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  font-size:50px;
+  letter-spacing: 10px;
+} */
+
+#xyz {
+  transform: rotate(-5deg);
+  /* width: 20% */
+}
+
+
+.flashlightGame p {
+    color:#FFD166
+}
