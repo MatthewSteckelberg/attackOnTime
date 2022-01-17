@@ -22,22 +22,12 @@ function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul className="navbar-nav navbar-nav-left">
+          <ul className="navbar-nav">
             <li className="nav-item">
               <Link className={location.parseInt === "/" ? "nav-link active" : "nav-link"} id="home-link" to="/">
                 Home
               </Link>
             </li>
-            {/* {userManager.currentUser ?
-              <li className="nav-item">
-                <Link className="nav-link" to="/" onClick={onLogout}>
-                  Logout {userManager.currentUser.sub}
-                </Link></li> :
-              <li className="nav-item">
-                <Link className="nav-link" id="login-link" to="/Login" >
-                  Login
-                </Link> </li>}
-*/}
             {userManager.currentUser ? <></> :
               <li className="nav-item">
                 <Link className="nav-link" id="signup-link" to="/signup">
@@ -68,12 +58,12 @@ function Navbar() {
             </li>
           </ul>
         </div>
-        <div className='login-logout-spot nav navbar-nav navbar-right'>
+        <div className='login-logout-spot navbar-right'>
             {userManager.currentUser ?
               <Link className='login-logout-btn' id='nav-login-button' to="/" onClick={onLogout}>
                 Logout {userManager.currentUser.sub}
               </Link>
-              : <Link className='login-logout-btn' id='nav-logout-button' to='/Login' >
+              : <Link className='login-logout-btn' id='nav-logout-button' to='/Login'>
                 Login
               </Link>}
           </div>
