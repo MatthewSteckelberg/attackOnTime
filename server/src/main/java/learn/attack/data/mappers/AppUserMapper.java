@@ -23,4 +23,5 @@ public class AppUserMapper implements RowMapper<AppUser> {
                 rs.getBoolean("disabled"),
                 roles);
     }
+
 }

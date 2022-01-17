@@ -15,6 +15,7 @@ public class HighScoreMapper implements RowMapper<HighScore> {
         highScore.setHighScore(resultSet.getInt("high_score"));
         highScore.setUserId(resultSet.getInt("user_id"));
         highScore.setUserName(resultSet.getString("user_name"));
+        highScore.setDisabled(resultSet.getBoolean("disabled"));
         return highScore;
     }
 }
