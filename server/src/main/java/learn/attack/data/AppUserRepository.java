@@ -1,7 +1,10 @@
 package learn.attack.data;
 
 import learn.attack.data.mappers.AppUserMapper;
+import learn.attack.data.mappers.GameMapper;
+import learn.attack.data.mappers.HighScoreMapper;
 import learn.attack.models.AppUser;
+import learn.attack.models.HighScore;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.security.core.GrantedAuthority;
@@ -97,5 +100,15 @@ public class AppUserRepository {
                 + "inner join users au on ur.user_id = au.user_id "
                 + "where au.user_name = ?";
         return jdbcTemplate.query(sql, (rs, rowId) -> rs.getString("role_name"), username);
+    }
+
+    public List<HighScore> findAll() {
+        final String sql = "select high_scores.high_score_id, high_scores.high_score, users.user_id, users.user_name, users.disabled\n" +
+                " from high_scores\n" +
+                " INNER JOIN users\n" +
+                " ON high_scores.user_id = users.user_id\n" +
+                " order by high_scores.high_score asc\n";
+
+        return jdbcTemplate.query(sql, new HighScoreMapper());
     }
 }

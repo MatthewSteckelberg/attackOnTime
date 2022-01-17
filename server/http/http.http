@@ -29,3 +29,9 @@ Content-Type: application/json
     "password": "P@ssw0rd!"
 }
 ###
+
+
+GET http://localhost:8080/api/users HTTP/1.1
+
+
+###

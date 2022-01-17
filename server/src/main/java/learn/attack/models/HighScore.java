@@ -5,6 +5,7 @@ public class HighScore {
     private int highScoreId;
     private int highScore;
     private int userId;
+    private boolean disabled;
 
     public String getUserName() {
         return userName;
@@ -36,5 +37,13 @@ public class HighScore {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public boolean isDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(boolean disabled) {
+        this.disabled = disabled;
     }
 }
