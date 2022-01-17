@@ -1,21 +1,23 @@
 .navbar {
     background-color: #ffd166;
     font-family: "Audiowide", sans-serif;
-    font-size: 35px;
+    font-size: 30px;
     color:#073b4c
     }
-
-#home-link, #login-link, #description-link, #navbarDropdownMenuLink {
-    color: #073b4c;
-    margin-left: 15px;
-    text-shadow: 2px 2px 2px #118AB2;
-}
 
 .nav-link .active {
     color:#118AB2;
     margin-left: 15px;
     text-shadow: 2px 2px 2px #073b4c;
 }
+
+#home-link, #login-link, #description-link, #navbarDropdownMenuLink, #signup-link{
+    color: #073b4c;
+    margin-left: 15px;
+    text-shadow: 2px 2px 2px #118AB2;
+}
+
+
 
 nav {
     border-bottom: 5px solid #ef476f;
