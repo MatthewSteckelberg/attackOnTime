@@ -57,8 +57,6 @@ public class AppUserService implements UserDetailsService {
             return result;
         } //test when working: result += validatePassword(password);
 
-
-        //todo fix password being different hash
         password = encoder.encode(password);
 
         AppUser appUser = new AppUser(0, username, password,false, List.of("User"));

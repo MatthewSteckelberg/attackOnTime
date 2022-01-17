@@ -91,11 +91,11 @@ public class AppUserRepository {
     }
 
     private List<String> getRolesByUsername(String username) {
-        final String sql = "select r.name "
+        final String sql = "select r.role_name "
                 + "from user_roles ur "
                 + "inner join roles r on ur.role_id = r.role_id "
                 + "inner join users au on ur.user_id = au.user_id "
                 + "where au.user_name = ?";
-        return jdbcTemplate.query(sql, (rs, rowId) -> rs.getString("name"), username);
+        return jdbcTemplate.query(sql, (rs, rowId) -> rs.getString("role_name"), username);
     }
 }
