@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './descriptionsStyle.css';
 import Navbar from '../navbar/Navbar';
 
-function Descriptions() {
+function Descriptions(userObject) {
     const [gamelist, setgamelist] = useState([]);
 
     const getAllGames = () => {
@@ -20,7 +20,7 @@ function Descriptions() {
 
     return (
         <div className='descriptions'>
-            <Navbar />
+            <Navbar userObject={userObject}/>
             {gamelist.map((games) => (<div key={games.gameId}><h2 className='description-header'>{games.name}</h2> 
             <p className='game-description'>{games.description}</p></div> ))}    
 

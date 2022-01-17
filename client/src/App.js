@@ -10,6 +10,7 @@ import Homepage from './components/homepage/Homepage';
 import Descriptions from './components/descriptions/Descriptions';
 import HighScores from './components/highScores/HighScores';
 import jwtDecode from 'jwt-decode';
+import Navbar from './components/navbar/Navbar';
 import {useEffect, useState} from 'react';
 import UserContext from './components/UserContext'
 
@@ -38,7 +39,7 @@ function App() {
 
       if (currentUser == null || userObject.sub !== currentUser.sub) {
         setCurrentUser(userObject);
-        console.log(currentUser.status);
+        // console.log(currentUser.status);
       }
     }
   });
@@ -48,16 +49,16 @@ function App() {
 
       <BrowserRouter>
       <UserContext.Provider value={userObject}>
-          {/* <Navbar /> */}
+          {/* <Navbar userObject={userObject}/> */}
           <Switch>
             <Route exact path="/">
-              <Homepage />
+              <Homepage userObject={userObject}/>
             </Route>
             <Route path="/descriptions">
-              <Descriptions />
+              <Descriptions userObject={userObject}/>
             </Route>
             <Route path="/highscores">
-              <HighScores />
+              <HighScores userObject={userObject}/>
             </Route>
             <Route path="/window">
               <BayWindow />
@@ -75,10 +76,10 @@ function App() {
               <Picture />
             </Route>
             <Route path="/Login">
-              <Login />
+              <Login userObject={userObject}/>
             </Route>
             <Route path="/signup">
-              <SignUp />
+              <SignUp userObject={userObject}/>
             </Route>
             {/* <Route exact path="/users">
             {currentUser ? <Users /> : <Redirect to="/"/>}

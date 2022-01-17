@@ -11,7 +11,7 @@ const DEFAULT_USER = {
 };
 
 
-function SignUp() {
+function SignUp(userObject) {
     const [user, setUser] = useState(DEFAULT_USER)
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -89,7 +89,7 @@ function SignUp() {
 
     return (
         <div className="login-page">
-            <Navbar />
+            <Navbar userObject={userObject}/>
             <div id='empty-div'></div>
             <form onSubmit={handleSubmit}>
                 <div className="form-row">

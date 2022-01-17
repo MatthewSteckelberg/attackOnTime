@@ -2,7 +2,8 @@
     background-color: #ffd166;
     font-family: "Audiowide", sans-serif;
     font-size: 30px;
-    color:#073b4c
+    color:#073b4c;
+    overflow: hidden;
     }
 
 .nav-link .active {
@@ -17,6 +18,36 @@
     text-shadow: 2px 2px 2px #118AB2;
 }
 
+#home-link:hover, #login-link:hover, #description-link:hover, #signup-link:hover {
+    color:#0e5d7a;
+    margin-left: 15px;
+    text-shadow: 2px 2px 2px #073b4c;
+}
+
+
+.login-logout-spot {
+
+    margin-left: 10%;
+}
+.login-logout-btn {
+    color:#ffd166;
+    box-shadow: 4px 4px 4px #118AB2;
+    background-color: #073b4c;
+    border-radius: 15px;
+    padding: 3px 3px 3px 10px;
+    outline-offset: 3px;
+    margin-bottom: 5%;
+    font-size:30px;
+    letter-spacing: 6px;
+}
+
+.login-logout-btn:hover {
+    color:#ffd166;
+    background-color: #0e5d7a;
+    box-shadow: 2px 2px 2px #118AB2;
+    text-decoration: none;
+}
+
 
 
 nav {
@@ -26,7 +57,6 @@ nav {
 .dropdown-menu {
     background-color: #ffd166;
     border-bottom: 5px solid #ef476f;
-     /* border-left: 5px solid #ef476f; */
     border-right: 5px solid #ef476f;
     
 }
