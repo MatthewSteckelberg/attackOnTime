@@ -33,6 +33,10 @@
     font-size:50px;
     letter-spacing: 10px;
 }
+
+.signupError {
+    color: red;
+}
 #empty-div {
     background-color: #073b4c;
     height:15px;
