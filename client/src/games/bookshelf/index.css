@@ -14,7 +14,7 @@
     --white: rgba(248, 255, 229, 1); */
 
   }
-  
+
   .bookshelf-game {
     /* background-color: #182028; */
     background-color: #073b4c;
@@ -23,15 +23,22 @@
   .bookshelf-game .btn {
     font-family: "Audiowide", sans-serif;
     color:#118AB2;
-    box-shadow: 5px 5px 5px #ef476f;
+    box-shadow: 10px 10px 10px #ef476f;
     background-color: #FFD166;
     border-radius: 15px;
     outline-offset: 3px;
-    margin-top:5%;
+    margin-top:10%;
+    margin-right:50px;
     margin-bottom: 1%;
-    font-size:50px;
+    font-size:100px;
     font-weight:bold;
     letter-spacing: 15px;
+    position: fixed;
+    z-index: 1000;
+}
+
+.bookshelf-body {
+  margin-top: 10%;
 }
 
 
@@ -46,6 +53,22 @@
   transform: rotate(-1deg);
   letter-spacing: 10px;
 
+}
+
+#wrong-book {
+  font-family: "Audiowide", sans-serif;
+  color:#ffd166;
+  padding-top: 2%;
+  margin-bottom: 1%;
+  font-size: 20px;
+  text-shadow: 5px 5px 5px #ef476f;
+  transform: rotate(-1deg);
+  letter-spacing: 10px;
+}
+
+#instruction-section {
+  /* position: fixed; */
+  z-index: 1000;
 }
 
   .bookshelf-game ul{

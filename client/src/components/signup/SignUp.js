@@ -1,5 +1,6 @@
 import './loginStyle.css';
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
 import { useHistory } from 'react-router-dom';
 const DEFAULT_USER = {
@@ -15,6 +16,7 @@ function SignUp() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("")
+    const history = useHistory();
 
     const updateUsername = (e) => {
         setUsername(e.target.value);
@@ -72,8 +74,33 @@ function SignUp() {
 
 
 
+    //     const jwt = localStorage.getItem( "jwt_token");
+
+    //     fetch( "http://localhost:8080/api/todos",
+    //             {
+    //                 method: "POST",
+    //                 headers: {
+    //                     "Content-Type": "application/json",
+    //                     "Authorization": "Bearer " + jwt
+    //                 },
+    //                 body: JSON.stringify( {description: todo} )
+    //             }
+    //     ).then( 
+    //         (response) => {
+    //             if( response.status != 201 ){
+    //                 //todo: show valiation errors properly
+    //                 console.log( response );
+    //             } else {
+    //                 history.push( "/" );
+    //             }
+
+    //         }
+    //     );
 
 
+    //     //on success we need to do this...
+    //     history.push( "/" );
+    // }
 
 
     return (
