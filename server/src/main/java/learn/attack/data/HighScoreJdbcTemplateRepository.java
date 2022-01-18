@@ -23,7 +23,7 @@ public class HighScoreJdbcTemplateRepository implements HighScoreRepository{
     @Override
     public List<HighScore> topScores() {
 
-        final String sql = "select high_scores.high_score_id, high_scores.high_score, users.user_id, users.user_name \n" +
+        final String sql = "select high_scores.high_score_id, high_scores.high_score, users.user_id, users.user_name, users.disabled \n" +
                 " from high_scores\n" +
                 " INNER JOIN users\n" +
                 " ON high_scores.user_id = users.user_id\n" +

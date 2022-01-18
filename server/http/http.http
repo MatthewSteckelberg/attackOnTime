@@ -46,3 +46,9 @@ Content-Type: application/json
     "disabled": true,
     "roles": ["USER"]
 }
+
+###
+
+GET http://localhost:8080/api/highscores HTTP/1.1
+
+###
