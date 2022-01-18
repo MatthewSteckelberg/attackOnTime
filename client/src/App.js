@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Link, Redirect } from 'react-router-dom';
 import BayWindow from './games/windows/index.jsx';
 import FlashlightReact from './games/flashlight/flashlightReact';
 import DragCounter from './games/drag_counter/index.js';
@@ -83,7 +83,7 @@ function App() {
             </Route>
             <Route exact path="/users">
             <Users/>
-            {/* {currentUser ? <Users /> : <Redirect to="/"/>} */}
+            {currentUser ? currentUser.roles == "Admin" ? <Users /> : <Redirect to="/"/> : <Redirect to='/' />}
           </Route>
           <Route path="/disabled">
               <DisabledUsers />

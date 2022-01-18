@@ -38,13 +38,15 @@ function EnabledUsers() {
 
 
     const disableMe = (e) => {
-        e.preventDefault();
-        console.log("Test")
+        // e.preventDefault();
+        console.log(e)
         const userToDisable = {...defaultUser}
-        userToDisable.appUserId = e.appUserId;
-        userToDisable.user_name = e.user_name;
+        userToDisable.appUserId = e.userId;
+        userToDisable.user_name = e.userName;
         userToDisable.password = e.password;
         userToDisable.disabled = true;
+        userToDisable.roles = e.roles;
+
 
 
         let init = {
@@ -53,11 +55,18 @@ function EnabledUsers() {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-        body: JSON.stringify(userToDisable)
+        body: JSON.stringify({
+            appUserId: userToDisable.appUserId,
+            username: userToDisable.user_name,
+            password: "$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa",
+            disabled: true,
+            roles: ["USER"]
+        })
         }
 
         fetch(`http://localhost:8080/api/users/enabled/${userToDisable.appUserId}`, init)
         .then(response => {
+            console.log("hi")
             if(response.status === 204){
                 return null;
             } else if(response.status === 400){
@@ -72,6 +81,7 @@ function EnabledUsers() {
                     if(!body){
                         console.log("Success");
                         setErrors([]);
+                        window.location.reload(false);
                         // getAll().then(()=> reset());
                     } else {
                         setErrors(body);
@@ -80,10 +90,6 @@ function EnabledUsers() {
 
 
     }
-
-
-
-
 
 
 
@@ -107,6 +113,7 @@ function EnabledUsers() {
                         <div className='aligntext' >User Name: {user.userName}<br />
                             High Score: {user.highScore}<br />
                             Active: {String(!user.disabled)} <br />
+                            password:  {user.password}
                             <div>
                                 <button className='col-md-2 btn' onClick={() =>disableMe(user)}>Disable</button>
                             </div>
