@@ -13,7 +13,8 @@ import jwtDecode from 'jwt-decode';
 import {useEffect, useState} from 'react';
 import UserContext from './components/UserContext';
 import Users from './components/users/Users';
-
+import DisabledUsers from './components/users/DisabledUsers';
+import EnabledUsers from './components/users/EnabledUsers';
 import SignUp from './components/signup/SignUp';
 
 
@@ -39,26 +40,25 @@ function App() {
 
       if (currentUser == null || userObject.sub !== currentUser.sub) {
         setCurrentUser(userObject);
-        console.log(currentUser.status);
+        // console.log(currentUser.status);
       }
     }
   });
 
   return (
     <div className="App">
-
       <BrowserRouter>
-      <UserContext.Provider value={userObject}>
-          {/* <Navbar /> */}
+        <UserContext.Provider value={userObject}>
+          {/* <Navbar userObject={userObject}/> */}
           <Switch>
             <Route exact path="/">
-              <Homepage />
+              <Homepage userObject={userObject} />
             </Route>
             <Route path="/descriptions">
-              <Descriptions />
+              <Descriptions userObject={userObject} />
             </Route>
             <Route path="/highscores">
-              <HighScores />
+              <HighScores userObject={userObject} />
             </Route>
             <Route path="/window">
               <BayWindow />
@@ -76,17 +76,23 @@ function App() {
               <Picture />
             </Route>
             <Route path="/Login">
-              <Login />
+              <Login userObject={userObject} />
             </Route>
             <Route path="/signup">
-              <SignUp />
+              <SignUp userObject={userObject} />
             </Route>
             <Route exact path="/users">
             <Users/>
             {/* {currentUser ? <Users /> : <Redirect to="/"/>} */}
           </Route>
+          <Route path="/disabled">
+              <DisabledUsers />
+            </Route>
+            <Route path="/enabled">
+              <EnabledUsers />
+            </Route>
           </Switch>
-          </UserContext.Provider>
+        </UserContext.Provider>
       </BrowserRouter>
     </div>
   );

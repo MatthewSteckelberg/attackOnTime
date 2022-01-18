@@ -15,11 +15,7 @@
 
   }
 
-  .bookshelf-game {
-    /* background-color: #182028; */
-    background-color: #073b4c;
-    width:100%;
-  }
+ 
 
   #next-box {
     position: fixed;
@@ -105,10 +101,11 @@
     height: 100%;
     background-size: 50% 100%,50% 100%;
     background-position: left, right;
+
   }
   
   .bookshelf-game li::before{
-    z-index: -10;
+    z-index: 0;
     clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
     -webkit-clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
     background-repeat: no-repeat;
@@ -156,9 +153,9 @@
   
   .bookshelf-game img{
     position: absolute;
-    width: 43%;
+    width: 47%;
     left: 50%;
-    top: 50%;
+    top: 34%;
     transform: translateX(-50%) translateY(-60%);
     box-shadow: 5px -5px 10px rgba(0, 0, 0, 0.3);
     transition-property: transform;
@@ -167,6 +164,12 @@
   
   .bookshelf-game img:hover{
     transform: translateX(-40%) translateY(-70%) rotatez(25deg);
+  }
+
+  .bookshelf-game {
+    /* background-color: #182028; */
+    background-color: #073b4c;
+    width:100%;
   }
   
   @media (min-width:450px){

@@ -58,7 +58,7 @@ function Bookshelf() {
             {/* <h2 id="timerBox"></h2> */}
             <div className='bookshelf-body'>
                 <ul>
-                    <li><img className="book-10" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book10.jpg" alt="The Nowhere Girls" onClick={() => displayAlert(10)} /></li>
+                    <li><img className="book-10" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book10.jpg" alt="Magicians Impossible" onClick={() => displayAlert(10)} /></li>
                     <li><img className="book-2" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book02.jpg" alt="Gone Girl" onClick={() => displayAlert(2)} /></li>
                     <li><img className="book-3" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book03.jpg" alt="Point of Control" onClick={() => displayAlert(3)} /></li>
                     <li><img className="book-4" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book04.jpg" alt="Black Dog" onClick={() => displayAlert(4)} /></li>
@@ -67,7 +67,7 @@ function Bookshelf() {
                     <li><img className="book-7" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book07.jpg" alt="Der Kreide Mann" onClick={() => displayAlert(7)} /></li>
                     <li><img className="book-8" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book08.jpg" alt="Wink Poppy Midnight" onClick={() => displayAlert(8)} /></li>
                     <li><img className="book-9" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book09.jpg" alt="The Great Gatsby" onClick={() => displayAlert(9)} /></li>
-                    <li><img className="book-1" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book01.jpg" alt="Magicians Impossible" onClick={() => displayAlert(1)} /></li>
+                    <li><img className="book-1" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book01.jpg" alt="The Nowhere Girls" onClick={() => displayAlert(1)} /></li>
                     <li><img className="book-11" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book11.jpg" alt="The Light Between Oceans" onClick={() => displayAlert(11)} /></li>
                     <li><img className="book-13" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book13.jpg" alt="Resistance" onClick={() => displayAlert(13)} /></li>
                     <li><img className="book-12" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/book12.jpg" alt="Spindle Fire" onClick={() => displayAlert(12)} /></li>
