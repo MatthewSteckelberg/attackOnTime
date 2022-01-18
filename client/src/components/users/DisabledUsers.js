@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-function User() {
+function DisabledUsers() {
     const [userList, setUserList] = useState([]);
-    const getAllUsers = () => {
+    const getDisabledUsers = () => {
         const jwt = localStorage.getItem("jwt_token");
 
         const init = {
@@ -11,7 +11,7 @@ function User() {
             },
         };
 
-        return fetch('http://localhost:8080/api/users', init)
+        return fetch('http://localhost:8080/api/users/disabled', init)
             .then(response => response.json())
             .then(
                 body => setUserList(body));
@@ -21,7 +21,7 @@ function User() {
 
 
     useEffect(() => {
-        getAllUsers();
+        getDisabledUsers();
     }, [])
 
     return (
@@ -35,7 +35,7 @@ function User() {
                             High Score: {user.highScore}<br />
                             Active: {String(!user.disabled)} <br />
                             <div>
-                                <button className='col-md-2 btn'>Disable</button>
+                                <button className='col-md-2 btn'>Enable</button>
                             </div>
                             <br />
                         </div>
@@ -49,4 +49,4 @@ function User() {
     )
 }
 
-export default User;
+export default DisabledUsers;

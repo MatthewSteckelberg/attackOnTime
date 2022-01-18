@@ -111,4 +111,44 @@ public class AppUserRepository {
 
         return jdbcTemplate.query(sql, new HighScoreMapper());
     }
+
+    public List<HighScore> findEnabled() {
+        final String sql = "select high_scores.high_score_id, high_scores.high_score, users.user_id, users.user_name, users.disabled\n" +
+                " from high_scores\n" +
+                " INNER JOIN users\n" +
+                " ON high_scores.user_id = users.user_id\n" +
+                " WHERE users.disabled = 0\n" +
+                " order by high_scores.high_score asc\n";
+
+        return jdbcTemplate.query(sql, new HighScoreMapper());
+    }
+
+    public List<HighScore> findDisabled() {
+        final String sql = "select high_scores.high_score_id, high_scores.high_score, users.user_id, users.user_name, users.disabled\n" +
+                " from high_scores\n" +
+                " INNER JOIN users\n" +
+                " ON high_scores.user_id = users.user_id\n" +
+                " WHERE users.disabled = 1\n" +
+                " order by high_scores.high_score asc\n";
+
+        return jdbcTemplate.query(sql, new HighScoreMapper());
+    }
+
+    public boolean disable(AppUser user){
+        final String sql = "update users set "
+                + "disabled = true "
+                + "where user_id = ?;";
+
+        return jdbcTemplate.update(sql,user.getAppUserId()) > 0;
+
+    }
+
+    public boolean enable(AppUser user){
+        final String sql = "update users set "
+                + "disabled = false "
+                + "where user_id = ?;";
+
+        return jdbcTemplate.update(sql,user.getAppUserId()) > 0;
+    }
+
 }

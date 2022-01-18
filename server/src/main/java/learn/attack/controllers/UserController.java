@@ -35,4 +35,42 @@ public class UserController {
         return service.findAll();
     }
 
+    @GetMapping("/enabled")
+    public List<HighScore> findEnabled(){
+        return service.findEnabled();
+    }
+
+    @GetMapping("/disabled")
+    public List<HighScore> findDisabled(){
+        return service.findDisabled();
+    }
+
+    @PutMapping("/enabled/{appUserId}")
+    public ResponseEntity<Object> disable(@PathVariable int appUserId, @RequestBody AppUser user) {
+        if (appUserId != user.getAppUserId()) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+
+        Result<AppUser> result = service.disable(user);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return ErrorResponse.build(result);
+    }
+
+    @PutMapping("/disabled/{appUserId}")
+    public ResponseEntity<Object> enable(@PathVariable int appUserId, @RequestBody AppUser user) {
+        if (appUserId != user.getAppUserId()) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+
+        Result<AppUser> result = service.enable(user);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return ErrorResponse.build(result);
+    }
+
 }

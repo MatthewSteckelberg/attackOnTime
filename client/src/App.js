@@ -14,7 +14,8 @@ import Navbar from './components/navbar/Navbar';
 import {useEffect, useState} from 'react';
 import UserContext from './components/UserContext';
 import Users from './components/users/Users';
-
+import DisabledUsers from './components/users/DisabledUsers';
+import EnabledUsers from './components/users/EnabledUsers';
 import SignUp from './components/signup/SignUp';
 
 
@@ -86,6 +87,12 @@ function App() {
             <Users/>
             {/* {currentUser ? <Users /> : <Redirect to="/"/>} */}
           </Route>
+          <Route path="/disabled">
+              <DisabledUsers />
+            </Route>
+            <Route path="/enabled">
+              <EnabledUsers />
+            </Route>
           </Switch>
           </UserContext.Provider>
       </BrowserRouter>

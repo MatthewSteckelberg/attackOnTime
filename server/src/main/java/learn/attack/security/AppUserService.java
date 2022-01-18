@@ -117,6 +117,46 @@ public class AppUserService implements UserDetailsService {
 
     }
 
+    public List<HighScore> findEnabled() {
+        return repository.findEnabled();
+    }
+
+    public List<HighScore> findDisabled() {
+        return repository.findDisabled();
+    }
+
+    public Result<AppUser> disable(AppUser user) {
+        Result<AppUser> result = new Result<>();
+
+        if (user.getAppUserId() <= 0) {
+            result.addMessage("appUserId must be set for `update` operation", ResultType.INVALID);
+            return result;
+        }
+
+        if (!repository.disable(user)) {
+            String msg = String.format("appUserId: %s, not found", user.getAppUserId());
+            result.addMessage(msg, ResultType.NOT_FOUND);
+        }
+
+        return result;
+    }
+
+    public Result<AppUser> enable(AppUser user) {
+        Result<AppUser> result = new Result<>();
+
+        if (user.getAppUserId() <= 0) {
+            result.addMessage("appUserId must be set for `update` operation", ResultType.INVALID);
+            return result;
+        }
+
+        if (!repository.enable(user)) {
+            String msg = String.format("appUserId: %s, not found", user.getAppUserId());
+            result.addMessage(msg, ResultType.NOT_FOUND);
+        }
+
+        return result;
+    }
+
 //    private void validate(String username) {
 //        if (username == null || username.isBlank()) {
 //            throw new ValidationException("username is required");
