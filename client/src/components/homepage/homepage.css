@@ -5,10 +5,14 @@ outline-color: #073b4c;
 font-family: "Audiowide", sans-serif;
 }
 
+#header-box {
+    padding-top: 8%;
+}
+
 #main-header {
 
     color: #ffd166;
-    padding-top: 8%;
+
     margin-bottom: 2%;
     font-size: 150px;
     text-shadow: 5px 5px 5px #ef476f;
@@ -26,7 +30,6 @@ font-family: "Audiowide", sans-serif;
     font-size:50px;
     transform: rotate(-5deg);
     letter-spacing: 10px;
-    
 }
 
 .main-btn:hover {
@@ -38,9 +41,9 @@ font-family: "Audiowide", sans-serif;
     font-size: 50px;
     margin-right:2%;
     margin-left:2%;
-    /* margin-bottom: 2%; */
-}
-
+    margin-bottom: 2%; 
+} 
+/* 
 .description-box {
     margin-bottom: 5%;
 }
@@ -52,9 +55,9 @@ font-family: "Audiowide", sans-serif;
     background-color: #073b4c;
     /* outline-color: #073b4c;
     outline-style: solid; */
-    position: absolute;
-}
-
+    /* position: absolute; */
+/* } */
+/* 
 #time-and-seconds {
     color:#ffd166
 }
@@ -73,5 +76,4 @@ font-family: "Audiowide", sans-serif;
 
 .timer-btn:hover {
     background-color:#ffdc8b
-}
-
+}  */
