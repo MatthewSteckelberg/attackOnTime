@@ -35,3 +35,14 @@ GET http://localhost:8080/api/users HTTP/1.1
 
 
 ###
+
+PUT http://localhost:8080/api/users/enabled/23 HTTP/1.1
+Content-Type: application/json
+
+{
+    "appUserId": 23,
+    "username": "know",
+    "password": "$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa",
+    "disabled": true,
+    "roles": ["USER"]
+}
