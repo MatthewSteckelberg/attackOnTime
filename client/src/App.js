@@ -21,7 +21,7 @@ import SignUp from './components/signup/SignUp';
 function App() {
 
   const [currentUser, setCurrentUser] = useState(null);
-
+console.log(currentUser)
   const userObject = {
     currentUser,
     setCurrentUser
@@ -81,15 +81,15 @@ function App() {
             <Route path="/signup">
               <SignUp userObject={userObject} />
             </Route>
-            <Route exact path="/users">
-            <Users/>
-            {currentUser ? currentUser.roles == "Admin" ? <Users /> : <Redirect to="/"/> : <Redirect to='/' />}
-          </Route>
           <Route path="/disabled">
-              <DisabledUsers />
+          {currentUser && currentUser.authorities == "ROLE_ADMIN" ? 
+            <DisabledUsers /> : 
+            <Redirect to="/"/>}
             </Route>
             <Route path="/enabled">
-              <EnabledUsers />
+            {currentUser && currentUser.authorities == "ROLE_ADMIN" ? 
+            <EnabledUsers /> : 
+            <Redirect to="/"/>}
             </Route>
           </Switch>
         </UserContext.Provider>
