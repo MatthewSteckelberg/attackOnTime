@@ -12,7 +12,6 @@ import HighScores from './components/highScores/HighScores';
 import jwtDecode from 'jwt-decode';
 import {useEffect, useState} from 'react';
 import UserContext from './components/UserContext';
-import Users from './components/users/Users';
 import DisabledUsers from './components/users/DisabledUsers';
 import EnabledUsers from './components/users/EnabledUsers';
 import SignUp from './components/signup/SignUp';
