@@ -84,8 +84,6 @@ function EnabledUsers() {
                 if (!body) {
                     console.log("Success");
                     setErrors([]);
-                    // window.location.reload(false);
-                    // getAll().then(()=> reset());
                 } else {
                     setErrors(body);
                 }
