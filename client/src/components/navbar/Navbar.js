@@ -59,7 +59,17 @@ function Navbar() {
                 <Link className="dropdown-item" to="/bookshelf">Bookshelf</Link>
                 <Link className="dropdown-item" to="/picture">Picture Tear</Link>
               </div>
-            </li>
+              </li>
+              {userManager.currentUser && userManager.currentUser.authorities == 'ROLE_ADMIN' ?
+              <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Users
+              </a>
+              <div className='dropdown-menu' aria-labelledby="navbarDropdownMenuLink">
+                <Link className='dropdown-item' to='/enabled'>Enabled</Link>
+                <Link className='dropdown-item' to='/disabled'>Disabled</Link>
+              </div>
+            </li> : <></>}
           </ul>
         </div>
         <div className='login-logout-spot navbar-right'>
