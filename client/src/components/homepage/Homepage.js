@@ -3,13 +3,13 @@ import './homepage.css';
 import Navbar from '../navbar/Navbar';
 import Timer from '../timer/Timer'
 
-function Homepage() {
+function Homepage(userObject) {
  
 
 
     return (
         <div className="home">
-            <Navbar />
+            <Navbar userObject={userObject}/>
             <h1 id="main-header">Attack on Time</h1>
             <h2  ></h2>
       

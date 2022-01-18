@@ -6,7 +6,7 @@ import jwtDecode from 'jwt-decode';
 import { useHistory } from 'react-router-dom';
 
 
-function Login() {
+function Login(userObject) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [messages, setMessages] = useState([]);
@@ -65,7 +65,7 @@ function Login() {
 
 return (
     <div className="login-page">
-        <Navbar />
+        <Navbar userObject={userObject}/>
         <div id='empty-div'></div>
         <form onSubmit={handleSubmit}>
             <div className="form-row">

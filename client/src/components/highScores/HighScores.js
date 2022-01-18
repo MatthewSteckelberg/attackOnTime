@@ -2,7 +2,7 @@ import Navbar from '../navbar/Navbar';
 import './highStyle.css';
 import { useState, useEffect } from 'react';
 
-function HighScores() {
+function HighScores(userObject) {
 
     const [scoresList, setScoresList] = useState([]);
 
@@ -20,7 +20,7 @@ function HighScores() {
     let i = 1;
     return (
         <div className='scores-body'>
-            <Navbar />
+            <Navbar userObject={userObject}/>
             <h1 id='scores-header'>High Scores</h1>
             <div className='row'>
                 <div className='col-md-3'></div>

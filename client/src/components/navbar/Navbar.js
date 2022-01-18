@@ -1,9 +1,19 @@
 import './navbarStyle.css';
 import { Link, useLocation } from 'react-router-dom';
+import { useContext } from 'react';
+import UserContext from '../UserContext';
 
 function Navbar() {
 
+
+  const userManager = useContext(UserContext);
+
   const location = useLocation();
+
+  const onLogout = () => {
+    localStorage.removeItem("jwt_token");
+    userManager.setCurrentUser(null);
+  }
 
 
   return (
@@ -20,21 +30,14 @@ function Navbar() {
                 Home
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" id="signup-link" to="/signup">
-                SignUp
-              </Link>
-            </li>
-            {/* <li className="nav-item">
 
+            {userManager.currentUser ? <></> :
+              <li className="nav-item">
+                <Link className="nav-link" id="signup-link" to="/signup">
+                  SignUp
+                </Link>
+              </li>} 
 
-
-          {currentUser ? <Link className="nav-link" to="/"><span onClick={onLogout} >
-                {"Logout " + currentUser.sub}</span></Link> :
-              <Link className="nav-link" id="login-link" to="/Login" >
-                Login
-              </Link>}
-            </li> */}
             <li className="nav-item">
               <Link className="nav-link" id="description-link" to="/descriptions">
                 Game Descriptions
@@ -59,7 +62,15 @@ function Navbar() {
             </li>
           </ul>
         </div>
-
+        <div className='login-logout-spot navbar-right'>
+            {userManager.currentUser ?
+              <Link className='login-logout-btn' id='nav-login-button' to="/" onClick={onLogout}>
+                Logout {userManager.currentUser.sub}
+              </Link>
+              : <Link className='login-logout-btn' id='nav-logout-button' to='/Login'>
+                Login
+              </Link>}
+          </div>
       </nav>
     </>
   )
