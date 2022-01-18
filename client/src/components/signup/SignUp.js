@@ -63,7 +63,7 @@ function SignUp(userObject) {
             // body: JSON.stringify(newUser),
         };
 
-        fetch("http://localhost:8080/api/adduser", init)
+        fetch("http://localhost:8080/api/user", init)
             .then(
                 (response) => {
                     if (response.status != 201) {

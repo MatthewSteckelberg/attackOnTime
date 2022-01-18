@@ -10,8 +10,9 @@ import Homepage from './components/homepage/Homepage';
 import Descriptions from './components/descriptions/Descriptions';
 import HighScores from './components/highScores/HighScores';
 import jwtDecode from 'jwt-decode';
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import UserContext from './components/UserContext';
+import Users from './components/users/Users';
 
 import SignUp from './components/signup/SignUp';
 
@@ -79,9 +80,10 @@ function App() {
             <Route path="/signup">
               <SignUp userObject={userObject} />
             </Route>
-            {/* <Route exact path="/users">
-            {currentUser ? <Users /> : <Redirect to="/"/>}
-          </Route> */}
+            <Route exact path="/users">
+            <Users/>
+            {/* {currentUser ? <Users /> : <Redirect to="/"/>} */}
+          </Route>
           </Switch>
         </UserContext.Provider>
       </BrowserRouter>

@@ -4,6 +4,7 @@ import learn.attack.data.AppUserRepository;
 import learn.attack.domain.Result;
 import learn.attack.domain.ResultType;
 import learn.attack.models.AppUser;
+import learn.attack.models.HighScore;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -109,6 +110,11 @@ public class AppUserService implements UserDetailsService {
             //throw new ValidationException("password must contain a digit, a letter, and a non-digit/non-letter");
         }
         return result;
+    }
+
+    public List<HighScore> findAll() {
+        return repository.findAll();
+
     }
 
 //    private void validate(String username) {

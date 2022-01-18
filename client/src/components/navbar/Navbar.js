@@ -5,6 +5,7 @@ import UserContext from '../UserContext';
 
 function Navbar() {
 
+
   const userManager = useContext(UserContext);
 
   const location = useLocation();
@@ -13,6 +14,7 @@ function Navbar() {
     localStorage.removeItem("jwt_token");
     userManager.setCurrentUser(null);
   }
+
 
   return (
     <>
@@ -28,12 +30,14 @@ function Navbar() {
                 Home
               </Link>
             </li>
+
             {userManager.currentUser ? <></> :
               <li className="nav-item">
                 <Link className="nav-link" id="signup-link" to="/signup">
                   SignUp
                 </Link>
               </li>} 
+
             <li className="nav-item">
               <Link className="nav-link" id="description-link" to="/descriptions">
                 Game Descriptions
