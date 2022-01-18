@@ -2,6 +2,8 @@ import './homepage.css';
 
 import Navbar from '../navbar/Navbar';
 import Timer from '../timer/Timer'
+import clock from './clock.gif';
+
 
 function Homepage() {
  
@@ -20,7 +22,12 @@ function Homepage() {
                 growing reaction time based game in the world. Click the Start button if you want to give it a try.  
                 And don't forget to signup and login if you want to see your scores on the Leaderboard. </p>
             </div>
+            <br />          
             <br />
+            <br />
+            <br />
+            <br />
+
 
 
         </div>

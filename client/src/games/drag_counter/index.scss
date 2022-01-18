@@ -1,3 +1,14 @@
+#body-drag {
+  height: 800px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 700;
+	color: #231F20;
+	font-size: 20px;
+}
+  
   .wrap {
     position: relative;
     margin-left: 65px;
@@ -14,7 +25,6 @@
     width: 130px;
     height: 130px;
     border-radius: 40px;
-    display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
@@ -24,7 +34,7 @@
     overflow: hidden;
     z-index: 2;
   
-    span {
+    #span {
       user-select: none;
       position: absolute;
       top: 28px;
@@ -43,7 +53,7 @@
   
   .arrow-top {
     position: absolute;
-    top: -120px;
+    top: -170px;
     left: 0;
     transform: translateX(-50%);
     user-select: none;
@@ -52,35 +62,13 @@
   
   .arrow-bottom {
     position: absolute;
-    bottom: -57px;
+    bottom: -170px;
     left: 0;
     transform: translateX(-50%);
     user-select: none;
     width: 50px;
   }
-  
-  .github {
-    width: 40px;
-    height: 40px;
-    background: url(http://alikinvv.github.io/github.svg) no-repeat center;
-    position: fixed;
-    bottom: 40px;
-    right: 40px;
-    animation: github 3s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s infinite;
-  }
-  
-  @keyframes github {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.2);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  
+    
   .desc {
       position: absolute;
       top: 40px;
