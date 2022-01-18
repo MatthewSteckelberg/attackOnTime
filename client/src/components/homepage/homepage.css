@@ -34,8 +34,10 @@ font-family: "Audiowide", sans-serif;
 }
 
 .attack-description {
-    color:#118AB2;
+    color:#ef476f;
     font-size: 50px;
+    margin-right:2%;
+    margin-left:2%;
     /* margin-bottom: 2%; */
 }
 

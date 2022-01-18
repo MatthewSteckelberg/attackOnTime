@@ -1,26 +1,19 @@
 import './navbarStyle.css';
-import { useState, useEffect, useContext } from 'react';
-import TimerContext from '../TimerContext';
-
+import { Link, useLocation } from 'react-router-dom';
+import { useContext } from 'react';
+import UserContext from '../UserContext';
 
 function Navbar() {
-  const timerManager = useContext(TimerContext);
-  console.log('nav: '+ timerManager.timer)
-  // const timerManager = useContext(TimerContext);
-  // const [totalTime, setTotalTime] = useState(0);
-
-  // const timerBox = document.getElementById('timer-box');
-  // console.log('nav: ' + timerManager.timer)
-  // setTotalTime(timerManager.timer);
-  // console.log('nav: '+ totalTime);
-  // useEffect(() => {
-  //   console.log(totalTime)
-
-  // ), [totalTime]}
-
-    // timerBox.innerHTML = timerManager.timer;
 
 
+  const userManager = useContext(UserContext);
+
+  const location = useLocation();
+
+  const onLogout = () => {
+    localStorage.removeItem("jwt_token");
+    userManager.setCurrentUser(null);
+  }
 
 
   return (
@@ -33,34 +26,51 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link active" id="home-link" href="/">Home <span className="sr-only">(current)</span></a>
+              <Link className={location.parseInt === "/" ? "nav-link active" : "nav-link"} id="home-link" to="/">
+                Home
+              </Link>
+            </li>
+
+            {userManager.currentUser ? <></> :
+              <li className="nav-item">
+                <Link className="nav-link" id="signup-link" to="/signup">
+                  SignUp
+                </Link>
+              </li>} 
+
+            <li className="nav-item">
+              <Link className="nav-link" id="description-link" to="/descriptions">
+                Game Descriptions
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" id="login-link" href="/Login">Login</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" id="description-link" href="/descriptions">Game Descriptions</a>
+              <Link className="nav-link" id="description-link" to="/highscores">
+                High Scores
+              </Link>
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Games
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a className="dropdown-item" href="/window">Bay Window</a>
-                <a className="dropdown-item" href="/flashlight">Flashlight</a>
-                <a className="dropdown-item" href="/drag">Drag Counter</a>
-                <a className="dropdown-item" href="/bookshelf">Bookshelf</a>
-                <a className="dropdown-item" href="/picture">Picture Tear</a>
+                <Link className="dropdown-item" to="/window">Bay Window</Link>
+                <Link className="dropdown-item" to="/flashlight">Flashlight</Link>
+                <Link className="dropdown-item" to="/drag">Drag Counter</Link>
+                <Link className="dropdown-item" to="/bookshelf">Bookshelf</Link>
+                <Link className="dropdown-item" to="/picture">Picture Tear</Link>
               </div>
-            </li>
-            <li>
-              <h2 className='timer-box'>
-
-              </h2>
             </li>
           </ul>
         </div>
-
+        <div className='login-logout-spot navbar-right'>
+            {userManager.currentUser ?
+              <Link className='login-logout-btn' id='nav-login-button' to="/" onClick={onLogout}>
+                Logout {userManager.currentUser.sub}
+              </Link>
+              : <Link className='login-logout-btn' id='nav-logout-button' to='/Login'>
+                Login
+              </Link>}
+          </div>
       </nav>
     </>
   )

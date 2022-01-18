@@ -2,6 +2,8 @@ import "./flashlight.module.css";
 import './index.css';
 import lightOn from './images/light-on.webp';
 import lightOff from './images/light-off.webp';
+import Timer from '../../components/timer/Timer';
+
 
 function FlashlightReact() {
 
@@ -14,7 +16,7 @@ function FlashlightReact() {
 
         document.documentElement.style.setProperty('--cursorX', x + 'px')
         document.documentElement.style.setProperty('--cursorY', y + 'px')
-        console.log({ x });
+        // console.log({ x });
     }
 
     document.addEventListener('mousemove', update)
@@ -31,7 +33,9 @@ function FlashlightReact() {
         r.style.setProperty('--mouse', 'auto');
         document.getElementById('lightSwitchOff').removeAttribute("hidden");
         document.getElementById('lightSwitchOn').hidden = true;
-        document.getElementById('light-next-button').removeAttribute("hidden");
+        // document.getElementById('light-next-button').removeAttribute("hidden");
+        
+        document.getElementById('xyz').removeAttribute("hidden");
         document.getElementById('flashlight-instructions').hidden = true;
 
         // var rs = getComputedStyle(r);
@@ -44,12 +48,14 @@ function FlashlightReact() {
 
         <div className="flashlightGame">
             <h2 id="flashlight-instructions">It's dark in here, turn on the lights!</h2>
-            <a hidden className='btn' id='light-next-button' href="/" type='submit'>NEXT</a>
+            {/* <a hidden className='btn' id='light-next-button' href="/" type='submit'>NEXT</a> */}
             <div id="lightSwitchDiv row">
                 <img className="switch" src={lightOff} alt="light switch" id="lightSwitchOn" onClick={turnOnLights} />
                 <img className="switch" hidden src={lightOn} alt="light switch" id="lightSwitchOff" onClick={turnOnLights} />
             </div>
-
+            <div hidden id='xyz'>
+                <Timer />
+            </div>
         </div>
     );
 

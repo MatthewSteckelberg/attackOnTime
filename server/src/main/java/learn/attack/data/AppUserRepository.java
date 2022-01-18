@@ -1,7 +1,10 @@
 package learn.attack.data;
 
 import learn.attack.data.mappers.AppUserMapper;
+import learn.attack.data.mappers.GameMapper;
+import learn.attack.data.mappers.HighScoreMapper;
 import learn.attack.models.AppUser;
+import learn.attack.models.HighScore;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.security.core.GrantedAuthority;
@@ -26,9 +29,9 @@ public class AppUserRepository {
     public AppUser findByUsername(String username) {
         List<String> roles = getRolesByUsername(username);
 
-        final String sql = "select app_user_id, username, password_hash, disabled "
-                + "from app_user "
-                + "where username = ?;";
+        final String sql = "select user_id, user_name, password, disabled "
+                + "from users "
+                + "where user_name = ?;";
 
         return jdbcTemplate.query(sql, new AppUserMapper(roles), username)
                 .stream()
@@ -38,7 +41,7 @@ public class AppUserRepository {
     @Transactional
     public AppUser create(AppUser user) {
 
-        final String sql = "insert into app_user (username, password_hash) values (?, ?);";
+        final String sql = "insert into users (user_name, password) values (?, ?);";
 
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
@@ -62,10 +65,10 @@ public class AppUserRepository {
     @Transactional
     public void update(AppUser user) {
 
-        final String sql = "update app_user set "
-                + "username = ?, "
+        final String sql = "update users set "
+                + "user_name = ?, "
                 + "disabled = ? "
-                + "where app_user_id = ?";
+                + "where user_id = ?";
 
         jdbcTemplate.update(sql,
                 user.getUsername(), !user.isEnabled(), user.getAppUserId());
@@ -75,7 +78,7 @@ public class AppUserRepository {
 
     private void updateRoles(AppUser user) {
         // delete all roles, then re-add
-        jdbcTemplate.update("delete from app_user_role where app_user_id = ?;", user.getAppUserId());
+        jdbcTemplate.update("delete from user_roles where user_id = ?;", user.getAppUserId());
 
         Collection<GrantedAuthority> authorities = user.getAuthorities();
 
@@ -84,18 +87,68 @@ public class AppUserRepository {
         }
 
         for (String role : AppUser.convertAuthoritiesToRoles(authorities)) {
-            String sql = "insert into app_user_role (app_user_id, app_role_id) "
-                    + "select ?, app_role_id from app_role where `name` = ?;";
+            String sql = "insert into user_roles (user_id, role_id) "
+                    + "select ?, role_id from roles where role_name = ?;";
             jdbcTemplate.update(sql, user.getAppUserId(), role);
         }
     }
 
     private List<String> getRolesByUsername(String username) {
-        final String sql = "select r.name "
-                + "from app_user_role ur "
-                + "inner join app_role r on ur.app_role_id = r.app_role_id "
-                + "inner join app_user au on ur.app_user_id = au.app_user_id "
-                + "where au.username = ?";
-        return jdbcTemplate.query(sql, (rs, rowId) -> rs.getString("name"), username);
+        final String sql = "select r.role_name "
+                + "from user_roles ur "
+                + "inner join roles r on ur.role_id = r.role_id "
+                + "inner join users au on ur.user_id = au.user_id "
+                + "where au.user_name = ?";
+        return jdbcTemplate.query(sql, (rs, rowId) -> rs.getString("role_name"), username);
     }
+
+    public List<HighScore> findAll() {
+        final String sql = "select high_scores.high_score_id, high_scores.high_score, users.user_id, users.user_name, users.disabled\n" +
+                " from high_scores\n" +
+                " INNER JOIN users\n" +
+                " ON high_scores.user_id = users.user_id\n" +
+                " order by high_scores.high_score asc\n";
+
+        return jdbcTemplate.query(sql, new HighScoreMapper());
+    }
+
+    public List<HighScore> findEnabled() {
+        final String sql = "select high_scores.high_score_id, high_scores.high_score, users.user_id, users.user_name, users.disabled\n" +
+                " from high_scores\n" +
+                " INNER JOIN users\n" +
+                " ON high_scores.user_id = users.user_id\n" +
+                " WHERE users.disabled = 0\n" +
+                " order by high_scores.high_score asc\n";
+
+        return jdbcTemplate.query(sql, new HighScoreMapper());
+    }
+
+    public List<HighScore> findDisabled() {
+        final String sql = "select high_scores.high_score_id, high_scores.high_score, users.user_id, users.user_name, users.disabled\n" +
+                " from high_scores\n" +
+                " INNER JOIN users\n" +
+                " ON high_scores.user_id = users.user_id\n" +
+                " WHERE users.disabled = 1\n" +
+                " order by high_scores.high_score asc\n";
+
+        return jdbcTemplate.query(sql, new HighScoreMapper());
+    }
+
+    public boolean disable(AppUser user){
+        final String sql = "update users set "
+                + "disabled = true "
+                + "where user_id = ?;";
+
+        return jdbcTemplate.update(sql,user.getAppUserId()) > 0;
+
+    }
+
+    public boolean enable(AppUser user){
+        final String sql = "update users set "
+                + "disabled = false "
+                + "where user_id = ?;";
+
+        return jdbcTemplate.update(sql,user.getAppUserId()) > 0;
+    }
+
 }

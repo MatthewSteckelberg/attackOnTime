@@ -2,7 +2,6 @@ import './App.css';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import BayWindow from './games/windows/index.jsx';
 import FlashlightReact from './games/flashlight/flashlightReact';
-import Navbar from './components/navbar/Navbar';
 import DragCounter from './games/drag_counter/index.js';
 import Bookshelf from './games/bookshelf';
 import Login from './components/login/Login';
@@ -10,45 +9,58 @@ import Picture from './games/picture_tear/index'
 import Homepage from './components/homepage/Homepage';
 import Descriptions from './components/descriptions/Descriptions';
 import HighScores from './components/highScores/HighScores';
-import { useEffect, useState } from 'react';
-import TimerContext from './components/TimerContext';
+import jwtDecode from 'jwt-decode';
+import Navbar from './components/navbar/Navbar';
+import {useEffect, useState} from 'react';
+import UserContext from './components/UserContext';
+import Users from './components/users/Users';
+import DisabledUsers from './components/users/DisabledUsers';
+import EnabledUsers from './components/users/EnabledUsers';
+import SignUp from './components/signup/SignUp';
 
 
 function App() {
 
-  const [timer, setTimer] = useState(0);
-  const timerObject = {
-    timer,
-    setTimer
+  const [currentUser, setCurrentUser] = useState(null);
+
+  const userObject = {
+    currentUser,
+    setCurrentUser
   };
-  console.log('app: ' + timer)
 
-  const timerIsRunning = localStorage.getItem("timer")
-  console.log('local: ' + timerIsRunning)
-
-
+  const onLogout = () => {
+    localStorage.removeItem("jwt_token");
+    setCurrentUser(null);
+  }
   useEffect(() => {
-    const existingTimer = localStorage.getItem('timer');
-    if (existingTimer) {
-      setTimer(existingTimer);
+
+
+    const existingJwt = localStorage.getItem("jwt_token");
+    if (existingJwt) {
+      const userObject = jwtDecode(existingJwt);
+
+      if (currentUser == null || userObject.sub !== currentUser.sub) {
+        setCurrentUser(userObject);
+        // console.log(currentUser.status);
+      }
     }
-  })
+  });
 
   return (
     <div className="App">
 
       <BrowserRouter>
-        <TimerContext.Provider value={timerObject}>
-          {/* <Navbar /> */}
+      <UserContext.Provider value={userObject}>
+          {/* <Navbar userObject={userObject}/> */}
           <Switch>
             <Route exact path="/">
-              <Homepage timer={timer} />
+              <Homepage userObject={userObject}/>
             </Route>
             <Route path="/descriptions">
-              <Descriptions />
+              <Descriptions userObject={userObject}/>
             </Route>
             <Route path="/highscores">
-              <HighScores />
+              <HighScores userObject={userObject}/>
             </Route>
             <Route path="/window">
               <BayWindow />
@@ -66,10 +78,23 @@ function App() {
               <Picture />
             </Route>
             <Route path="/Login">
-              <Login />
+              <Login userObject={userObject}/>
+            </Route>
+            <Route path="/signup">
+              <SignUp userObject={userObject}/>
+            </Route>
+            <Route exact path="/users">
+            <Users/>
+            {/* {currentUser ? <Users /> : <Redirect to="/"/>} */}
+          </Route>
+          <Route path="/disabled">
+              <DisabledUsers />
+            </Route>
+            <Route path="/enabled">
+              <EnabledUsers />
             </Route>
           </Switch>
-        </TimerContext.Provider>
+          </UserContext.Provider>
       </BrowserRouter>
     </div>
   );

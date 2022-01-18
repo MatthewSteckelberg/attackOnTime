@@ -27,6 +27,7 @@ public class HighScoreJdbcTemplateRepository implements HighScoreRepository{
                 " from high_scores\n" +
                 " INNER JOIN users\n" +
                 " ON high_scores.user_id = users.user_id\n" +
+                " where users.disabled = 0\n" +
                 " order by high_scores.high_score asc\n" +
                 " limit 1000;";
         return jdbcTemplate.query(sql, new HighScoreMapper());

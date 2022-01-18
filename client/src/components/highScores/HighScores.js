@@ -2,7 +2,7 @@ import Navbar from '../navbar/Navbar';
 import './highStyle.css';
 import { useState, useEffect } from 'react';
 
-function HighScores() {
+function HighScores(userObject) {
 
     const [scoresList, setScoresList] = useState([]);
 
@@ -17,26 +17,29 @@ function HighScores() {
         console.log(scoresList);
     }, []);
 
-
+    let i = 1;
     return (
         <div className='scores-body'>
-            <Navbar />
+            <Navbar userObject={userObject}/>
             <h1 id='scores-header'>High Scores</h1>
             <div className='row'>
                 <div className='col-md-3'></div>
                 <div id='scores-section' className='col-md-6'>
                     <table className='table' id='scores-table'>
                         <thead>
-                            <tr>
-                                <th scope='col'>Score</th>
-                                <th scope='col'>User Name</th>
+                            <tr id='headers-row'>
+
+                                <th className='table-header' scope='col'>Rank</th>
+                                <th className='table-header' scope='col'>User Name</th>
+                                <th className='table-header' scope='col'>Score</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {scoresList.map(score =>
+                            {scoresList.map(score=>
                                 <tr key={score.highScoreId}>
-                                    <td>{score.highScore}</td>
+                                    <td>{i++}</td>
                                     <td>{score.userName}</td>
+                                    <td>{score.highScore}</td>
                                 </tr>)}
                         </tbody>
                     </table>

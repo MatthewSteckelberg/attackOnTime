@@ -17,10 +17,11 @@ public class AppUserMapper implements RowMapper<AppUser> {
     @Override
     public AppUser mapRow(ResultSet rs, int i) throws SQLException {
         return new AppUser(
-                rs.getInt("app_user_id"),
-                rs.getString("username"),
-                rs.getString("password_hash"),
+                rs.getInt("user_id"),
+                rs.getString("user_name"),
+                rs.getString("password"),
                 rs.getBoolean("disabled"),
                 roles);
     }
+
 }
