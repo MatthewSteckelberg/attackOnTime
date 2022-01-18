@@ -10,7 +10,7 @@
     outline-style: solid;
     outline-color: #ffd166;
     border-radius: 15px;
-    width: 40%;
+    width: 500px;
     box-shadow: 10px 10px 10px #ef476f;
 }
 
@@ -20,6 +20,7 @@
     box-shadow: 10px 10px 10px #ef476f;
     background-color: #FFD166;
     border-radius: 15px;
+    width:100%;
     outline-offset: 3px;
     font-size:100px;
     font-weight:bold;
