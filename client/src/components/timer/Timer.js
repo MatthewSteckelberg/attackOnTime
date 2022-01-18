@@ -32,6 +32,11 @@ function Timer() {
             document.getElementById('start-button').hidden = 'true'
             document.getElementById('next-button-1').hidden = 'true'
             document.getElementById('next-button-2').removeAttribute('hidden')
+        } else if (location.pathname === '/drag') {
+            document.getElementById('start-button').hidden = 'true'
+            document.getElementById('next-button-1').hidden = 'true'
+            document.getElementById('next-button-2').hidden = 'true'
+            document.getElementById('next-button-3').removeAttribute('hidden')
         } else if (location.pathname === '/' && localSeconds != null) {
             document.getElementById('start-button').hidden = 'true';
             document.getElementById('next-button-1').hidden = 'true';
@@ -57,7 +62,7 @@ function Timer() {
     }, [isActive, seconds]);
 
 
-    const games = ['/bookshelf', '/flashlight', '/']
+    const games = ['/bookshelf', '/flashlight', '/drag', '/']
 
 
     const nextButton = () => {
@@ -74,6 +79,10 @@ function Timer() {
 
         // TODO: 
         // CREATE save high score here.
+            // if logged in
+
+
+
         setIsActive(false);
         localStorage.removeItem("timer")
 
@@ -84,8 +93,8 @@ function Timer() {
         <>
             <a className='btn main-btn' id='start-button' href={games[0]} onClick={nextButton}>Start</a>
             <a hidden className='timer-btn btn' id='next-button-1' href={games[1]} onClick={nextButton}>Next</a>
-            <a hidden className='timer-btn btn' id='next-button-2' href={games[2]} onClick={stop} type='submit'>Stop</a>
-            {/* <a hidden className='timer-btn btn' id='next-button-3' href={games[3]} onClick={nextButton}>Next</a> */}
+            <a hidden className='timer-btn btn' id='next-button-2' href={games[2]} onClick={nextButton} type='submit'>Next</a>
+            <a hidden className='timer-btn btn' id='next-button-3' href={games[3]} onClick={stop}>Stop</a>
             <button hidden className='timer-btn btn main-btn' id='stop-button' onClick={stop}>Stop</button>
             {/* <button id='reset-button' onClick={reset}>Reset</button> */}
             <div hidden id='timer-rectangle'>

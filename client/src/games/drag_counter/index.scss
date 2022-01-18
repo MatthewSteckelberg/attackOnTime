@@ -1,5 +1,5 @@
 #body-drag {
-  height: 800px;
+  height: 1050px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -7,6 +7,7 @@
 	font-weight: 700;
 	color: #231F20;
 	font-size: 20px;
+  background-color: #073b4c;
 }
   
   .wrap {
@@ -20,7 +21,7 @@
     margin-left: -65px;
     width: 30px;
     height: 30px;
-    background: #FF4957;
+    background: #ef476f;
     cursor: pointer;
     width: 130px;
     height: 130px;
@@ -50,7 +51,19 @@
       }
     }
   }
-  
+  #drag-instructions {
+    font-family: "Audiowide", sans-serif;
+    color:#ffd166;
+    padding-top: 2%;
+    text-align: center;
+    margin-bottom: 1%;
+    font-size: 70px;
+    text-shadow: 5px 5px 5px #ef476f;
+    transform: rotate(-1deg);
+    letter-spacing: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
   .arrow-top {
     position: absolute;
     top: -170px;
