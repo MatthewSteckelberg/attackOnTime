@@ -52,8 +52,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers( HttpMethod.POST, "/api/adduser").permitAll()
                 .antMatchers( HttpMethod.GET, "/api/games").permitAll()
                 .antMatchers( HttpMethod.POST, "/api/security/authenticate" ).permitAll()
-                .antMatchers( HttpMethod.POST, "/api/highscores" ).authenticated()
-                .antMatchers( HttpMethod.PUT, "/api/highscores/*" ).hasAnyRole("ADMIN", "USER")
+                .antMatchers( HttpMethod.POST, "/api/highscores" ).permitAll()
+                .antMatchers( HttpMethod.PUT, "/api/highscores/*" ).permitAll() //TODO change back to user or admin
                 .antMatchers( HttpMethod.DELETE, "/api/users/*").hasAnyRole("ADMIN")
                 .antMatchers( "/**" ).denyAll()
 
