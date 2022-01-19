@@ -29,6 +29,9 @@ public class HighScoreController {
 
     @PostMapping
     public ResponseEntity<Object> add(@RequestBody HighScore highScore){
+        if(checkForExistingScore(highScore.getHighScoreId())){
+            return new ResponseEntity<>("Highscore Already Exists", HttpStatus.CONFLICT);
+        }
         Result<HighScore> result = service.add(highScore);
         if(result.isSuccess()){
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
@@ -38,6 +41,9 @@ public class HighScoreController {
 
     @PutMapping("/{highScoreId}")
     public ResponseEntity<Object> update(@PathVariable int highScoreId, @RequestBody HighScore highScore){
+        if(!checkForExistingScore(highScore.getHighScoreId())){
+            return new ResponseEntity<>("Highscore DOESNT Exists", HttpStatus.CONFLICT);
+        }
         if (highScoreId != highScore.getHighScoreId()) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
@@ -59,8 +65,8 @@ public class HighScoreController {
     }
 
     @GetMapping("/{highScoreId}")
-    public boolean checkForExistingScore(@PathVariable int highScoreID){
-        return service.checkForExistingScore(highScoreID);
+    public boolean checkForExistingScore(@PathVariable int highScoreId){
+        return service.checkForExistingScore(highScoreId);
     }
 
 }
