@@ -9,7 +9,7 @@ function Timer() {
     const [isActive, setIsActive] = useState(false);
     const userManager = useContext(UserContext);
     if (userManager.currentUser) {
-    console.log('timer: ' + userManager.currentUser.sub)
+    console.log('timer: ' + userManager.currentUser.userId)
     }
     const location = useLocation();
 
@@ -47,6 +47,7 @@ function Timer() {
             document.getElementById('next-button-2').hidden = 'true';
             document.getElementById('stop-button').removeAttribute('hidden')
         }
+
     }, [])
 
     useEffect(() => {
