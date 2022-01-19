@@ -15,6 +15,7 @@ import UserContext from './components/UserContext';
 import DisabledUsers from './components/users/DisabledUsers';
 import EnabledUsers from './components/users/EnabledUsers';
 import SignUp from './components/signup/SignUp';
+import NotFound from './components/NotFound';
 
 
 function App() {
@@ -90,6 +91,9 @@ console.log(currentUser)
             <EnabledUsers /> : 
             <Redirect to="/"/>}
             </Route>
+            <Route>;
+            <NotFound />
+          </Route>;
           </Switch>
         </UserContext.Provider>
       </BrowserRouter>
