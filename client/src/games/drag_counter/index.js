@@ -4,7 +4,7 @@ import $ from 'jquery';
 import Timer from '../../components/timer/Timer';
 import { useEffect } from 'react';
 
-function Drag() {
+function Drag(userObject) {
 
     var mousePos = 0;
     var currentPos = 0;
@@ -161,7 +161,7 @@ let goalCount;
     return (
         <div id="body-drag">
             <div hidden id="drag-timer">
-                <Timer />
+                <Timer userObject={userObject}/>
             </div>
             <br />
             <div>

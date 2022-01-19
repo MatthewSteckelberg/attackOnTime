@@ -36,13 +36,29 @@
   font-family: "Audiowide", sans-serif;
   position: fixed;
   z-index: 1000;
-  margin-top:1%;
-  margin-left:40%;
-  margin-bottom: 1%;
+  margin-top:15%;
+  margin-left:30%;
+  /* margin-bottom: 1%; */
   transform: rotate(-5deg);
 }
 
 
-.flashlightGame p {
-    color:#FFD166
+#lightswitch-1 {
+  margin-left: 1%;
+  margin-top: 1%;
+}
+
+#lightswitch-2 {
+  margin-left: 70%;
+  margin-top: 10%;
+}
+
+#lightswitch-3 {
+  margin-left: 10%;
+  margin-top: 25%;
+}
+
+#lightswitch-4 {
+  margin-left: 30%;
+  margin-top: 30%;
 }

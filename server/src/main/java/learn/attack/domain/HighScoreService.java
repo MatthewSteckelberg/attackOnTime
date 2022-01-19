@@ -65,7 +65,7 @@ public class HighScoreService {
             result.addMessage("Highscore ID cannot be null.", ResultType.INVALID);
         }
 
-        if(highScore.getHighScore() != 0){
+        if(highScore.getHighScore() == 0){
             result.addMessage("Highscore cannot be 0  for operation.", ResultType.INVALID);
             return result;
         }
