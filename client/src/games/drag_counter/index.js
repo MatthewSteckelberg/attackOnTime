@@ -12,7 +12,8 @@ function Drag() {
     var offset = 130;
     var direction;
     var dur = 500;
-    var count = Math.floor(Math.random()*30);
+    var count = goalCount - 5 + Math.floor(Math.random()*10);
+    var goalCount = Math.floor(Math.random()*30);
 
     $(document).on('mousedown', '.stepper', function () {
         currentPos = mousePos;
