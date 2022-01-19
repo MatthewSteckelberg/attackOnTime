@@ -1,8 +1,10 @@
 import anime from 'animejs/lib/anime.es.js';
 import './index.scss';
 import $ from 'jquery';
+import Timer from '../../components/timer/Timer';
+import { useEffect } from 'react';
 
-function Drag() {
+function Drag(userObject) {
 
     var mousePos = 0;
     var currentPos = 0;
@@ -12,9 +14,37 @@ function Drag() {
     var offset = 130;
     var direction;
     var dur = 500;
+    
     var count = goalCount - 5 + Math.floor(Math.random()*10);
     var goalCount = Math.floor(Math.random()*30);
 
+let count;
+let goalCount;
+
+    goalCount = Math.floor((Math.random() * 30)) + 1;
+    if (Math.floor(Math.random() * 1) == 1) {
+        count = goalCount + (Math.floor(Math.random() * 5) + 1)
+    } else {
+        count = goalCount - (Math.floor(Math.random() * 5) + 1)
+    }
+
+
+
+
+
+
+    // do {
+    //     console.log('in the do while loop')
+    //     var goalCount = Math.floor(Math.random() * 30) + 1;
+    //     var count = goalCount - 5 + (Math.floor(Math.random() * 10));
+    // } while (count== goalCount)
+
+    // let resolvedGoal = goalCount;
+    // let resolvedCount = count;
+
+
+
+    console.log(document.getElementsByClassName('active').innerHTML)
     $(document).on('mousedown', '.stepper', function () {
         currentPos = mousePos;
 
@@ -75,12 +105,16 @@ function Drag() {
         });
     }
 
+
     function plus() {
         direction = 'plus';
         countAnimePlus = anime.timeline();
 
         $('.next').text(count).css('transform', 'translateY(-100px) translateX(-50%)');
-
+        console.log(`count: ${count} \ngoal: ${goalCount}`)
+        if (count == goalCount) {
+            document.getElementById('drag-timer').removeAttribute('hidden')
+        }
         countAnimePlus.add({
             targets: '.active',
             translateY: 100,
@@ -101,8 +135,10 @@ function Drag() {
         countAnimeMinus = anime.timeline();
 
         $('.next').text(count).css('transform', 'translateY(100px) translateX(-50%)');
-        console.log(count)
-
+        console.log(`count: ${count} \ngoal: ${goalCount}`)
+        if (count == goalCount) {
+                document.getElementById('drag-timer').removeAttribute('hidden')
+        }
         countAnimeMinus.add({
             targets: '.active',
             translateY: -100,
@@ -125,20 +161,28 @@ function Drag() {
     }, 300);
 
     return (
-        <div id = "body-drag">
-        <div>
-            <div class="wrap">
-                <div class="stepper">
-                    <span id="span" class="count first active hide"></span>
-                    <span id="span" class="count second next"></span>
+        <div id="body-drag">
+            <div hidden id="drag-timer">
+                <Timer userObject={userObject}/>
+            </div>
+            <br />
+            <div>
+                <br />
+                <div class="wrap">
+                    <div class="stepper">
+                        <span id="span" class="count first active hide"></span>
+                        <span id="span" class="count second next"></span>
+                    </div>
+                    <img src="https://alikinvv.github.io/stepper-iteration/build/img/arrow-top.svg" alt="" class="arrow-top"></img>
+                    <img src="https://alikinvv.github.io/stepper-iteration/build/img/arrow-bottom.svg" alt="" class="arrow-bottom"></img>
                 </div>
-                <img src="https://alikinvv.github.io/stepper-iteration/build/img/arrow-top.svg" alt="" class="arrow-top"></img>
-                <img src="https://alikinvv.github.io/stepper-iteration/build/img/arrow-bottom.svg" alt="" class="arrow-bottom"></img>
+
+                <h1 id='drag-instructions' class="desc">Hold & Drag to {goalCount}</h1>
+                <br />
             </div>
 
-            <span class="desc">Hold & Drag to {Math.floor(Math.random()*30)}</span>
         </div>
-        </div>
+
     )
 }
 

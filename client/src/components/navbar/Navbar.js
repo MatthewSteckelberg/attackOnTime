@@ -7,6 +7,7 @@ function Navbar() {
 
 
   const userManager = useContext(UserContext);
+  console.log("nav: " + userManager.currentUser)
 
   const location = useLocation();
 
@@ -66,8 +67,8 @@ function Navbar() {
                 Users
               </a>
               <div className='dropdown-menu' aria-labelledby="navbarDropdownMenuLink">
-                <Link className='dropdown-item' to='/enabled'>Enabled</Link>
-                <Link className='dropdown-item' to='/disabled'>Disabled</Link>
+                <Link className='dropdown-item' to='/enabled'>Active</Link>
+                <Link className='dropdown-item' to='/disabled'>Deactivated</Link>
               </div>
             </li> : <></>}
           </ul>

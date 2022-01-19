@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Timer from '../../components/timer/Timer';
 
 
-function Bookshelf() {
+function Bookshelf(userObject) {
     const bookID = Math.floor(Math.random() * 34 +1);
     const displayAlert = (bookNumber) => {
         // e.preventDefault();
@@ -49,7 +49,7 @@ function Bookshelf() {
             <h1 id="game-instructions">I want to read <span id='book-name'>The Great Gatsby</span></h1>
             <h3 id="wrong-book"></h3>
             <div hidden id='next-box'>
-                <Timer />
+                <Timer userObject={userObject}/>
             </div>
 
             {/* <a hidden className='col-md-2 btn' id='next-button' href="/flashlight" type='submit' >NEXT</a> */}
