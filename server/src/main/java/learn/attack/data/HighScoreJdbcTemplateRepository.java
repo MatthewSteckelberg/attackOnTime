@@ -71,4 +71,15 @@ public class HighScoreJdbcTemplateRepository implements HighScoreRepository{
           jdbcTemplate.update("delete from high_score where high_score_id = ?", highScoreId);
           return jdbcTemplate.update("delete from high_score where high_score_id = ?", highScoreId) > 0;
     }
+
+    @Override
+    public List<HighScore> checkForExistingScore(int id){
+        final String sql = "select high_scores.high_score_id, high_scores.high_score, users.user_id, users.user_name, users.disabled \n" +
+                " from high_scores\n" +
+                " INNER JOIN users\n" +
+                " ON high_scores.user_id = users.user_id\n" +
+                " where users.user_id = ?\n";
+        return jdbcTemplate.query(sql, new HighScoreMapper(), id);
+
+    }
 }

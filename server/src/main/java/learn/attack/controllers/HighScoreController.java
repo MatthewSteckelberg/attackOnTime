@@ -58,4 +58,9 @@ public class HighScoreController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping("/{highScoreId}")
+    public boolean checkForExistingScore(@PathVariable int highScoreID){
+        return service.checkForExistingScore(highScoreID);
+    }
+
 }

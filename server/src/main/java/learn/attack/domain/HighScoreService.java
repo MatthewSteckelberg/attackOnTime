@@ -82,4 +82,9 @@ public class HighScoreService {
 
         return result;
     }
+
+
+    public boolean checkForExistingScore(int highScoreId){
+        return (repository.checkForExistingScore(highScoreId).size() == 1);
+    }
 }
