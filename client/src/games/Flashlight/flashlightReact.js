@@ -3,9 +3,12 @@ import './index.css';
 import lightOn from './images/light-on.webp';
 import lightOff from './images/light-off.webp';
 import Timer from '../../components/timer/Timer';
+import { useContext } from 'react';
+import UserContext from '../../components/UserContext';
 
-
-function FlashlightReact() {
+function FlashlightReact(userObject) {
+    const userManager = useContext(UserContext);
+    console.log(userManager.currentUser)
 
     var light = "https://cdn.pixabay.com/photo/2012/04/16/13/27/switch-36000_960_720.png";
 
@@ -47,14 +50,16 @@ function FlashlightReact() {
     return (
 
         <div className="flashlightGame">
+            {userManager.currentUser ? <h2 id="flashlight-instructions">Help {userManager.currentUser.sub}, it's dark in here!</h2>:
             <h2 id="flashlight-instructions">It's dark in here, turn on the lights!</h2>
+            }
             {/* <a hidden className='btn' id='light-next-button' href="/" type='submit'>NEXT</a> */}
             <div id="lightSwitchDiv row">
                 <img className="switch" src={lightOff} alt="light switch" id="lightSwitchOn" onClick={turnOnLights} />
                 <img className="switch" hidden src={lightOn} alt="light switch" id="lightSwitchOff" onClick={turnOnLights} />
             </div>
             <div hidden id='xyz'>
-                <Timer />
+                <Timer userObject={userObject}/>
             </div>
         </div>
     );

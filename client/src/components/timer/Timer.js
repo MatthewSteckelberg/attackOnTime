@@ -1,18 +1,22 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import UserContext from '../UserContext'
 import './timerStyle.css';
 
 function Timer() {
     const [seconds, setSeconds] = useState(0);
     const [isActive, setIsActive] = useState(false);
-
+    const userManager = useContext(UserContext);
+    if (userManager.currentUser) {
+    console.log('timer: ' + userManager.currentUser.sub)
+    }
     const location = useLocation();
 
     const timeHere = document.getElementById('timer-here');
 
     let localSeconds = localStorage.getItem('timer');
-    console.log('local: ' + localSeconds)
+
 
     useEffect(() => {
         if (localSeconds != null) {
@@ -51,7 +55,6 @@ function Timer() {
             interval = setInterval(() => {
                 setSeconds(seconds => seconds + 1);
             }, 1000);
-            console.log(seconds)
             if (seconds != null) {
                 timeHere.innerHTML = seconds;
             }
@@ -79,7 +82,7 @@ function Timer() {
 
         // TODO: 
         // CREATE save high score here.
-            // if logged in
+        // if logged in
 
 
 

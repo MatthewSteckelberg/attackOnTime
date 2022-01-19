@@ -7,6 +7,7 @@ function Navbar() {
 
 
   const userManager = useContext(UserContext);
+  console.log("nav: " + userManager.currentUser)
 
   const location = useLocation();
 

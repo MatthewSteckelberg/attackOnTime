@@ -60,19 +60,19 @@ console.log(currentUser)
               <HighScores userObject={userObject} />
             </Route>
             <Route path="/window">
-              <BayWindow />
+              <BayWindow userObject={userObject}/>
             </Route>
             <Route path="/flashlight">
-              <FlashlightReact />
+              <FlashlightReact userObject={userObject}/>
             </Route>
             <Route path="/drag">
-              <DragCounter />
+              <DragCounter userObject={userObject}/>
             </Route>
             <Route path="/bookshelf">
-              <Bookshelf />
+              <Bookshelf userObject={userObject}/>
             </Route>
             <Route path="/picture">
-              <Picture />
+              <Picture userObject={userObject}/>
             </Route>
             <Route path="/Login">
               <Login userObject={userObject} />
