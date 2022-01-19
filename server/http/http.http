@@ -10,11 +10,11 @@ GET http://localhost:8080/api/highscores HTTP/1.1
 
 ###
 
-PUT http://localhost:8080/api/highscores/100 HTTP/1.1
+POST http://localhost:8080/api/highscores HTTP/1.1
 Content-Type: application/json
 
 {
-    "userId": 100,
+    "userId": 10000,
     "highScore": 1,
     "disabled": false,
     "userName": "production",
@@ -64,3 +64,4 @@ Content-Type: application/json
 GET http://localhost:8080/api/highscores HTTP/1.1
 
 ###
+GET http://localhost:8080/api/highscores/1 HTTP/1.1
