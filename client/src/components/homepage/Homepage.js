@@ -21,14 +21,18 @@ function Homepage(userObject) {
 
             <div className='description-box'>
                 <p className="attack-description">Think you have what it takes to play the number one fastest
-                    growing reaction time based game in the world. Click the Start button if you want to give it a try.
-                    And don't forget to signup and login if you want to see your scores on the Leaderboard. </p>
+                    growing reaction time based game in the world? Click the Start button if you want to give it a try!
+                    Signup and login if you want to see your scores on the Leaderboard. </p>
             </div>
             <br />          
             <br />
             <br />
             <br />
             <br />
+            <br />
+            <br />
+            <br />
+
 
 
 

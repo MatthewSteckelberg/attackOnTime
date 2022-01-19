@@ -4,46 +4,24 @@ import $ from 'jquery';
 import Timer from '../../components/timer/Timer';
 import { useEffect } from 'react';
 
-function Drag(userObject) {
+ do {
+var count = Math.floor(Math.random() * 10);
+var goalCount = count - 5 + (Math.floor(Math.random() * 12));
+    } while (count== goalCount)
+
+function Drag(userObject){
 
     var mousePos = 0;
     var currentPos = 0;
     var position = 0;
     var draggable = false;
     var blockAnimeAdd, countAnimePlus = anime.timeline(), countAnimeMinus = anime.timeline();
-    var offset = 130;
+    var offset = 50;
     var direction;
-    var dur = 500;
-    
-    var count = goalCount - 5 + Math.floor(Math.random()*10);
-    var goalCount = Math.floor(Math.random()*30);
+    var dur = 100;
 
-let count;
-let goalCount;
-
-    goalCount = Math.floor((Math.random() * 30)) + 1;
-    if (Math.floor(Math.random() * 1) == 1) {
-        count = goalCount + (Math.floor(Math.random() * 5) + 1)
-    } else {
-        count = goalCount - (Math.floor(Math.random() * 5) + 1)
-    }
-
-
-
-
-
-
-    // do {
-    //     console.log('in the do while loop')
-    //     var goalCount = Math.floor(Math.random() * 30) + 1;
-    //     var count = goalCount - 5 + (Math.floor(Math.random() * 10));
-    // } while (count== goalCount)
-
-    // let resolvedGoal = goalCount;
-    // let resolvedCount = count;
-
-
-
+    var newCount = count;
+      
     console.log(document.getElementsByClassName('active').innerHTML)
     $(document).on('mousedown', '.stepper', function () {
         currentPos = mousePos;
@@ -78,13 +56,13 @@ let goalCount;
 
         if (position <= (offset * -1) && draggable) {
             center();
-            count++;
+            newCount++;
             plus();
         }
 
         if (position >= offset && draggable) {
             center();
-            count--;
+            newCount--;
             minus();
         }
     });
@@ -110,11 +88,12 @@ let goalCount;
         direction = 'plus';
         countAnimePlus = anime.timeline();
 
-        $('.next').text(count).css('transform', 'translateY(-100px) translateX(-50%)');
-        console.log(`count: ${count} \ngoal: ${goalCount}`)
-        if (count == goalCount) {
+        $('.next').text(newCount).css('transform', 'translateY(-100px) translateX(-50%)');
+        console.log(`count: ${newCount} \ngoal: ${goalCount}`)
+        if (newCount == goalCount) {
             document.getElementById('drag-timer').removeAttribute('hidden')
         }
+       
         countAnimePlus.add({
             targets: '.active',
             translateY: 100,
@@ -134,11 +113,12 @@ let goalCount;
         direction = 'minus';
         countAnimeMinus = anime.timeline();
 
-        $('.next').text(count).css('transform', 'translateY(100px) translateX(-50%)');
-        console.log(`count: ${count} \ngoal: ${goalCount}`)
-        if (count == goalCount) {
+        $('.next').text(newCount).css('transform', 'translateY(100px) translateX(-50%)');
+        console.log(`count: ${newCount} \ngoal: ${goalCount}`)
+        if (newCount == goalCount) {
                 document.getElementById('drag-timer').removeAttribute('hidden')
-        }
+        }  
+    
         countAnimeMinus.add({
             targets: '.active',
             translateY: -100,
@@ -179,6 +159,7 @@ let goalCount;
 
                 <h1 id='drag-instructions' class="desc">Hold & Drag to {goalCount}</h1>
                 <br />
+                
             </div>
 
         </div>
