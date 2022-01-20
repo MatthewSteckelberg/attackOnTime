@@ -9,6 +9,16 @@
 	font-size: 20px;
   background-color: #073b4c;
 }
+
+#drag-timer {
+  position: fixed;
+  z-index: 1000;
+  // margin-top:1px;
+  margin-left:10%;
+  margin-bottom: 30%;
+  transform: rotate(-5deg);
+  background-color: #073b4c;
+}
   
   .wrap {
     position: relative;
@@ -89,12 +99,3 @@
       color: #ffbac1;
   }
 
-  #drag-timer {
-    position: fixed;
-    z-index: 1000;
-    margin-top:5%;
-    margin-left:10%;
-    margin-bottom: 1%;
-    transform: rotate(-5deg);
-    background-color: #073b4c;
-  }

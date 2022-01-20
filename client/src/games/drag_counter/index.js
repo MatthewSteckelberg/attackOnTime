@@ -146,7 +146,7 @@ function Drag(userObject){
                 <Timer userObject={userObject}/>
             </div>
             <br />
-            <div>
+            <div id='drag-section'>
                 <br />
                 <div class="wrap">
                     <div class="stepper">
