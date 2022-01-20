@@ -77,6 +77,7 @@ function SignUp(userObject) {
                     (errorMessages) => {
                         if(errorMessages !== null)
                         {
+                            console.log(errorMessages)
                         setErrorMessages(errorMessages);
                         }
                         else{

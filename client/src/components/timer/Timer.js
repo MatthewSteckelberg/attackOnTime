@@ -4,12 +4,27 @@ import { Link, useLocation } from 'react-router-dom';
 import UserContext from '../UserContext'
 import './timerStyle.css';
 
+
+let DEFAULT_USER = {
+    userId: -1,
+    highScore: -1,
+    disabled: true,
+    userName: 'fakeName',
+    highScoreId: -1
+};
+
+
 function Timer() {
     const [seconds, setSeconds] = useState(0);
     const [isActive, setIsActive] = useState(false);
     const userManager = useContext(UserContext);
+    const [userId, setUserId] = useState(0);
+    const [errors, setErrors] = useState([]);
+
+
+
     if (userManager.currentUser) {
-    console.log('timer: ' + userManager.currentUser.userId)
+        console.log('timer: ' + userManager.currentUser.userId)
     }
     const location = useLocation();
 
@@ -67,7 +82,11 @@ function Timer() {
 
 
     const games = ['/bookshelf', '/flashlight', '/drag', '/']
-
+    if (userManager.currentUser) {
+        fetch(`http://localhost:8080/api/users/username/${userManager.currentUser.sub}`)
+            .then(response => response.json())
+            .then(body => setUserId(body.appUserId))
+    }
 
     const nextButton = () => {
         localStorage.setItem('timer', seconds)
@@ -80,17 +99,64 @@ function Timer() {
         localStorage.removeItem("timer")
     }
     const stop = () => {
-
-        // TODO: 
-        // CREATE save high score here.
-        // if logged in
+        document.getElementById('next-button-3').hidden = 'true';
+        document.getElementById('response-box').removeAttribute('hidden')
 
 
+        // if logged in add a high score
+        if (userManager.currentUser) {
+            if (userManager.currentUser.disabled === true) {
+                setIsActive(false);
+                localStorage.removeItem("timer")
+            }
+            const name = userManager.currentUser.sub
+            const addHighScore = () => {
+                let init = {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        userId: userId,
+                        highScore: seconds,
+                        disabled: false,
+                        userName: name,
+                        highScoreId: userId
+                    })
 
+                }
+                console.log(init);
+                fetch(`http://localhost:8080/api/highscores`, init)
+                    .then(response => {
+                        console.log(response)
+                        if(response.status === 201) {
+                            document.getElementById('score-msg').innerHTML='New High Score!'
+                        } else {
+                            document.getElementById('score-msg').innerHTML='Something Went Wrong!'
+                            return response.json();
+                        }
+                        return Promise.reject("Error Occured");
+                    })
+                    .then(body => {
+                        if (!body) {
+                            console.log("Success");
+                            setErrors([]);
+                        } else {
+                            setErrors(body);
+                        }
+                    }).catch(error => console.log(error));
+
+            }
+            addHighScore();
+        } else {
+            // if no user login just reset the timer.
+            setIsActive(false);
+            localStorage.removeItem("timer")
+        }
         setIsActive(false);
         localStorage.removeItem("timer")
-
     }
+
 
 
     return (
@@ -98,9 +164,14 @@ function Timer() {
             <a className='btn main-btn' id='start-button' href={games[0]} onClick={nextButton}>Start</a>
             <a hidden className='timer-btn btn' id='next-button-1' href={games[1]} onClick={nextButton}>Next</a>
             <a hidden className='timer-btn btn' id='next-button-2' href={games[2]} onClick={nextButton} type='submit'>Next</a>
-            <a hidden className='timer-btn btn' id='next-button-3' href={games[3]} onClick={stop}>Stop</a>
+            <a hidden className='timer-btn btn' id='next-button-3' onClick={stop}>Stop</a>
             <button hidden className='timer-btn btn main-btn' id='stop-button' onClick={stop}>Stop</button>
             {/* <button id='reset-button' onClick={reset}>Reset</button> */}
+            <div hidden id='response-box'>
+                <h2 id='score-msg'></h2>
+                <h4 id='home-msg'>Return to the home page to play again</h4>
+                <a className='timer-btn btn' href='/'>Home</a>
+            </div>
             <div hidden id='timer-rectangle'>
                 <h2 id='timer-box'><span id='timer-here'></span> seconds</h2>
             </div>

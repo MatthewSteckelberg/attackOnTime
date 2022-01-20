@@ -1,12 +1,14 @@
 package learn.attack.controllers;
 
 
+import learn.attack.App;
 import learn.attack.domain.Result;
 import learn.attack.models.AppUser;
 import learn.attack.models.HighScore;
 import learn.attack.security.AppUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +22,12 @@ public class UserController {
     public UserController(AppUserService service) {
         this.service = service;
     }
+
+    @GetMapping("username/{username}")
+    public AppUser findByUserName(@PathVariable String username) {
+        return service.loadUserByUsername(username);
+    }
+
 
     @PostMapping
     public ResponseEntity<Object> add(@RequestBody AppUser user) {

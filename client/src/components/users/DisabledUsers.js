@@ -69,7 +69,6 @@ function DisabledUsers() {
 
         fetch(`http://localhost:8080/api/users/disabled/${userToDisable.appUserId}`, init)
             .then(response => {
-                console.log("hi")
                 if (response.status === 204) {
                     getDisabledUsers();
                     return null;

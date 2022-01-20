@@ -26,3 +26,20 @@
     font-weight:bold;
     letter-spacing: 15px;
 }
+
+#score-msg {
+    font-family: "Audiowide", sans-serif;
+    color:#ffd166;
+    padding-top: 2%;
+    margin-bottom: 1%;
+    font-size: 70px;
+    text-shadow: 5px 5px 5px #ef476f;
+    transform: rotate(-1deg);
+    letter-spacing: 10px;
+}
+
+#home-msg {
+    font-family: "Audiowide", sans-serif;
+    color:#ef476f;
+    font-size: 30px;
+}

@@ -1,5 +1,6 @@
 package learn.attack.security;
 
+import learn.attack.App;
 import learn.attack.data.AppUserRepository;
 import learn.attack.domain.Result;
 import learn.attack.domain.ResultType;
@@ -26,7 +27,7 @@ public class AppUserService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public AppUser loadUserByUsername(String username) throws UsernameNotFoundException {
         AppUser appUser = repository.findByUsername(username);
 
         if (appUser == null || !appUser.isEnabled()) {
@@ -156,6 +157,7 @@ public class AppUserService implements UserDetailsService {
 
         return result;
     }
+
 
 //    private void validate(String username) {
 //        if (username == null || username.isBlank()) {

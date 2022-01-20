@@ -88,3 +88,13 @@
       left: 40px;
       color: #ffbac1;
   }
+
+  #drag-timer {
+    position: fixed;
+    z-index: 1000;
+    margin-top:5%;
+    margin-left:10%;
+    margin-bottom: 1%;
+    transform: rotate(-5deg);
+    background-color: #073b4c;
+  }

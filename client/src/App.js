@@ -10,7 +10,7 @@ import Homepage from './components/homepage/Homepage';
 import Descriptions from './components/descriptions/Descriptions';
 import HighScores from './components/highScores/HighScores';
 import jwtDecode from 'jwt-decode';
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import UserContext from './components/UserContext';
 import DisabledUsers from './components/users/DisabledUsers';
 import EnabledUsers from './components/users/EnabledUsers';
@@ -20,7 +20,7 @@ import SignUp from './components/signup/SignUp';
 function App() {
 
   const [currentUser, setCurrentUser] = useState(null);
-console.log(currentUser)
+  console.log(currentUser)
   const userObject = {
     currentUser,
     setCurrentUser
@@ -39,7 +39,7 @@ console.log(currentUser)
 
       if (currentUser == null || userObject.sub !== currentUser.sub) {
         setCurrentUser(userObject);
-        // console.log(currentUser.status);
+
       }
     }
   });
@@ -60,19 +60,19 @@ console.log(currentUser)
               <HighScores userObject={userObject} />
             </Route>
             <Route path="/window">
-              <BayWindow userObject={userObject}/>
+              <BayWindow userObject={userObject} />
             </Route>
             <Route path="/flashlight">
-              <FlashlightReact userObject={userObject}/>
+              <FlashlightReact userObject={userObject} />
             </Route>
             <Route path="/drag">
-              <DragCounter userObject={userObject}/>
+              <DragCounter userObject={userObject} />
             </Route>
             <Route path="/bookshelf">
-              <Bookshelf userObject={userObject}/>
+              <Bookshelf userObject={userObject} />
             </Route>
             <Route path="/picture">
-              <Picture userObject={userObject}/>
+              <Picture userObject={userObject} />
             </Route>
             <Route path="/Login">
               <Login userObject={userObject} />
@@ -80,15 +80,15 @@ console.log(currentUser)
             <Route path="/signup">
               <SignUp userObject={userObject} />
             </Route>
-          <Route path="/disabled">
-          {currentUser && currentUser.authorities == "ROLE_ADMIN" ? 
-            <DisabledUsers /> : 
-            <Redirect to="/"/>}
+            <Route path="/disabled">
+              {currentUser && currentUser.authorities == "ROLE_ADMIN" ?
+                <DisabledUsers /> :
+                <Redirect to="/" />}
             </Route>
             <Route path="/enabled">
-            {currentUser && currentUser.authorities == "ROLE_ADMIN" ? 
-            <EnabledUsers /> : 
-            <Redirect to="/"/>}
+              {currentUser && currentUser.authorities == "ROLE_ADMIN" ?
+                <EnabledUsers /> :
+                <Redirect to="/" />}
             </Route>
           </Switch>
         </UserContext.Provider>
