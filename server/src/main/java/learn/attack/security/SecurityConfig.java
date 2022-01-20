@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers( HttpMethod.GET, "/api/users/disabled").permitAll()
                 .antMatchers( HttpMethod.PUT, "/api/users/enabled/*").permitAll()
                 .antMatchers( HttpMethod.PUT, "/api/users/disabled/*").permitAll()
-                .antMatchers( HttpMethod.POST, "/api/adduser").permitAll()
+                .antMatchers( HttpMethod.POST, "/api/users").permitAll()
                 .antMatchers( HttpMethod.GET, "/api/games").permitAll()
                 .antMatchers( HttpMethod.POST, "/api/security/authenticate" ).permitAll()
                 .antMatchers( HttpMethod.POST, "/api/highscores" ).permitAll()

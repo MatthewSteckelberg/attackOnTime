@@ -10,23 +10,36 @@ GET http://localhost:8080/api/highscores HTTP/1.1
 
 ###
 
-PUT http://localhost:8080/api/highscores/100 HTTP/1.1
+POST http://localhost:8080/api/highscores HTTP/1.1
 Content-Type: application/json
 
 {
-    "userId": 100,
-    "highScore": 1,
+    "userId": 2,
+    "highScore": 10,
     "disabled": false,
-    "userName": "production",
-    "highScoreId": 100
+    "userName": "carl",
+    "highScoreId":2
 }
 
 ###
-POST http://localhost:8080/api/users HTTP/1.1
+
+PUT http://localhost:8080/api/highscores/24 HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "matthewdelmarsteckelberge",
+    "userId": 24,
+    "highScore": 1,
+    "disabled": false,
+    "userName": "felt",
+    "highScoreId": 24
+}
+
+###
+POST http://localhost:8080/api/adduser HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "asdgasgadfg",
     "password": "P@ssw0rd!",
     "roles": ["USER"]
 }
@@ -65,12 +78,9 @@ GET http://localhost:8080/api/highscores HTTP/1.1
 
 ###
 
-GET http://localhost:8080/api/users/username/carl HTTP/1.1
-Content-Type: application/json
+GET http://localhost:8080/api/users/username/felt HTTP/1.1
 
-{
-    "username": "matthew"
-}
+
 
 
 ###
