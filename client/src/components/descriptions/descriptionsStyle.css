@@ -17,9 +17,24 @@
     letter-spacing: 15px;
 }
 .game-description {
-    color:#118AB2;
+    color:#ffd166;
     font-size: 50px;
     text-align: left;
+    margin-left: 2%;
+    margin-top: 2%;
+}
+
+.game-images {
     margin-left: 5%;
     margin-top: 2%;
+    max-height: 300px;
+    max-width: 250px;
+    width: auto;
+    height: auto;
+    border-style: solid;
+    border-color: #ef476f;
+    border-width: 10px;
+    box-shadow: 4px 4px 4px #118ab2;
+    border-radius: 15px;
+    
 }

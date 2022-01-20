@@ -11,12 +11,12 @@ font-family: "Audiowide", sans-serif;
 
 #main-header {
 
-    color: #ffd166;
+    color: #ef476f;
 
     margin-bottom: 2%;
-    font-size: 150px;
-    text-shadow: 5px 5px 5px #ef476f;
-    transform: rotate(-5deg);
+    font-size: 100px;
+    /* text-shadow: 5px 5px 5px #ef476f; */
+    /* transform: rotate(-5deg); */
     letter-spacing: 15px;
 }
 
