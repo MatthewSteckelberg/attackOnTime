@@ -20,6 +20,7 @@ function Timer() {
     const userManager = useContext(UserContext);
     const [userId, setUserId] = useState(0);
     const [errors, setErrors] = useState([]);
+    const [hasScore, setHasScore] = useState(false);
 
 
 
@@ -34,6 +35,7 @@ function Timer() {
 
 
     useEffect(() => {
+      
         if (localSeconds != null) {
             setSeconds(parseInt(localSeconds));
             setIsActive(true)
@@ -83,6 +85,7 @@ function Timer() {
 
     const games = ['/bookshelf', '/flashlight', '/drag', '/']
     if (userManager.currentUser) {
+        
         fetch(`http://localhost:8080/api/users/username/${userManager.currentUser.sub}`)
             .then(response => response.json())
             .then(body => setUserId(body.appUserId))
@@ -110,11 +113,46 @@ function Timer() {
                 localStorage.removeItem("timer")
             }
             const name = userManager.currentUser.sub
+
+
+
+            const checkExisting = () => {
+                const jwt = localStorage.getItem("jwt_token");
+        
+                const init = {
+                    headers: {
+                        "Authorization": "Bearer " + jwt
+                    },
+                };
+        
+                return fetch(`http://localhost:8080/api/highscores/${userId}`, init)
+                    .then(response => response.json())
+                    .then(
+                        body => setHasScore(body));
+            }
+
+
+
+            checkExisting();
+
+            if(hasScore){
+                console.log("higscore exists");
+            } else{
+                console.log("higscore does not exist exist");
+
+            }
+
+
+
             const addHighScore = () => {
+
+                const jwt = localStorage.getItem("jwt_token");
+
                 let init = {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer " + jwt
                     },
                     body: JSON.stringify({
                         userId: userId,
@@ -130,9 +168,9 @@ function Timer() {
                     .then(response => {
                         console.log(response)
                         if(response.status === 201) {
-                            document.getElementById('score-msg').innerHTML='New High Score!'
+                            document.getElementById('score-msg').innerHTML=`Score of ${seconds} submitted for ${name}`;
                         } else {
-                            document.getElementById('score-msg').innerHTML='Something Went Wrong!'
+                            //document.getElementById('score-msg').innerHTML='Something Went Wrong!'
                             return response.json();
                         }
                         return Promise.reject("Error Occured");
